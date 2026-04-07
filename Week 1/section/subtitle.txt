@@ -1,0 +1,6007 @@
+0
+00:00:02,799 --> 00:00:06,409
+Hello and welcome to CS 50 section one.
+
+1
+00:00:06,710 --> 00:00:08,659
+This week we're talking about C,
+
+2
+00:00:08,789 --> 00:00:13,619
+so hopefully you've watched David's lecture on C before coming to this,
+
+3
+00:00:13,710 --> 00:00:18,700
+and section will be a time for you to review some of the course content,
+
+4
+00:00:18,969 --> 00:00:20,280
+get some more
+
+5
+00:00:20,469 --> 00:00:22,620
+uh familiarity with that material,
+
+6
+00:00:22,829 --> 00:00:25,399
+and also get to see some more
+
+7
+00:00:25,709 --> 00:00:27,500
+pieces of code in action.
+
+8
+00:00:28,270 --> 00:00:29,219
+So let's get started.
+
+9
+00:00:30,510 --> 00:00:31,870
+So my name is Kelly.
+
+10
+00:00:31,969 --> 00:00:33,979
+I'm the preceptor here at the college,
+
+11
+00:00:34,270 --> 00:00:38,099
+and here is my email if you ever need to contact me,
+
+12
+00:00:38,470 --> 00:00:38,860
+um,
+
+13
+00:00:38,909 --> 00:00:39,189
+but yeah,
+
+14
+00:00:39,349 --> 00:00:40,099
+happy to be here.
+
+15
+00:00:42,200 --> 00:00:43,869
+So today we're first going to be
+
+16
+00:00:44,080 --> 00:00:47,549
+going into some of these questions that might have come up for you
+
+17
+00:00:47,959 --> 00:00:49,369
+while watching lecture.
+
+18
+00:00:49,569 --> 00:00:50,080
+So
+
+19
+00:00:50,319 --> 00:00:51,490
+why are we using C?
+
+20
+00:00:51,919 --> 00:00:55,700
+How can we read and write code that includes things like variables,
+
+21
+00:00:56,040 --> 00:00:56,720
+conditionals,
+
+22
+00:00:56,759 --> 00:00:57,750
+and loops?
+
+23
+00:00:58,169 --> 00:01:00,479
+Why do we care about data types in C,
+
+24
+00:01:00,830 --> 00:01:04,150
+and what does it mean to compile a C program?
+
+25
+00:01:05,040 --> 00:01:06,110
+So all of these things,
+
+26
+00:01:06,319 --> 00:01:10,709
+hopefully you'll get a little bit more of these answers as we go on today.
+
+27
+00:01:12,660 --> 00:01:13,379
+So first,
+
+28
+00:01:13,580 --> 00:01:15,209
+before we dive into the code,
+
+29
+00:01:15,459 --> 00:01:17,330
+I wanted to give you a little bit of more,
+
+30
+00:01:17,419 --> 00:01:20,250
+a little bit more background using CS50.dev,
+
+31
+00:01:20,779 --> 00:01:23,050
+which is our visual studio code,
+
+32
+00:01:23,459 --> 00:01:23,769
+uh,
+
+33
+00:01:23,860 --> 00:01:25,099
+coding environment.
+
+34
+00:01:25,540 --> 00:01:26,730
+So when you go to that link,
+
+35
+00:01:26,980 --> 00:01:27,970
+you'll likely see,
+
+36
+00:01:28,099 --> 00:01:28,489
+uh,
+
+37
+00:01:28,500 --> 00:01:29,769
+a development
+
+38
+00:01:30,069 --> 00:01:32,129
+environment like this.
+
+39
+00:01:32,900 --> 00:01:35,889
+This is separated into your text editor
+
+40
+00:01:36,220 --> 00:01:38,129
+in this top right corner.
+
+41
+00:01:38,379 --> 00:01:40,489
+That's where you're going to be writing your code,
+
+42
+00:01:40,660 --> 00:01:42,319
+having your different files open.
+
+43
+00:01:42,970 --> 00:01:45,000
+On the left you have your File Explorer,
+
+44
+00:01:45,250 --> 00:01:48,239
+which is similar to something you've likely seen before.
+
+45
+00:01:48,370 --> 00:01:50,089
+That's where all your files will be,
+
+46
+00:01:50,129 --> 00:01:51,080
+your folders,
+
+47
+00:01:51,569 --> 00:01:53,279
+and that's where you can manage those.
+
+48
+00:01:53,569 --> 00:01:56,639
+And then in the bottom window we have your terminal window.
+
+49
+00:01:56,889 --> 00:01:59,519
+This is where you'll be typing your commands,
+
+50
+00:01:59,730 --> 00:02:00,800
+running your code,
+
+51
+00:02:01,050 --> 00:02:01,669
+things like that.
+
+52
+00:02:04,300 --> 00:02:08,330
+CS 50 also has some special features that
+
+53
+00:02:08,330 --> 00:02:11,289
+we've integrated into this VS code environment,
+
+54
+00:02:11,520 --> 00:02:18,570
+one of which is the CS 50 duck at CS50.AI. This is CS50's AI
+
+55
+00:02:18,570 --> 00:02:24,089
+helper tool similar to the kind of feedback you get from a teaching fellow.
+
+56
+00:02:24,479 --> 00:02:24,860
+Um,
+
+57
+00:02:25,050 --> 00:02:29,000
+the duck is meant to give you some assistance if you have any questions,
+
+58
+00:02:29,330 --> 00:02:29,660
+um,
+
+59
+00:02:29,729 --> 00:02:31,399
+or want to talk things through.
+
+60
+00:02:33,639 --> 00:02:36,110
+We also have this Style 50 button,
+
+61
+00:02:36,440 --> 00:02:37,070
+and this
+
+62
+00:02:37,279 --> 00:02:40,190
+is one of our axes that we grade,
+
+63
+00:02:40,520 --> 00:02:41,029
+um,
+
+64
+00:02:41,119 --> 00:02:41,839
+code on.
+
+65
+00:02:41,919 --> 00:02:43,669
+So style is referring to
+
+66
+00:02:44,000 --> 00:02:45,630
+how pretty your code is,
+
+67
+00:02:45,800 --> 00:02:47,169
+how legible,
+
+68
+00:02:47,479 --> 00:02:47,839
+um,
+
+69
+00:02:48,000 --> 00:02:49,440
+mainly for humans.
+
+70
+00:02:49,559 --> 00:02:52,149
+So if you see this example on the right here,
+
+71
+00:02:52,440 --> 00:02:52,830
+um,
+
+72
+00:02:52,919 --> 00:02:54,570
+it's missing some spacing.
+
+73
+00:02:54,600 --> 00:02:56,759
+You might have noticed that we usually like to
+
+74
+00:02:56,759 --> 00:02:59,330
+have those curly braces on their own line.
+
+75
+00:02:59,679 --> 00:03:02,190
+And so if you click that style 50 button.
+
+76
+00:03:03,360 --> 00:03:07,320
+What it will do is show you these two.
+
+77
+00:03:07,669 --> 00:03:08,130
+Um,
+
+78
+00:03:08,220 --> 00:03:08,630
+versions,
+
+79
+00:03:08,710 --> 00:03:09,479
+your version,
+
+80
+00:03:09,490 --> 00:03:11,699
+and then the stylized version
+
+81
+00:03:12,029 --> 00:03:12,860
+on the right.
+
+82
+00:03:13,149 --> 00:03:14,600
+And you can also hit
+
+83
+00:03:14,910 --> 00:03:15,740
+in the top right,
+
+84
+00:03:16,149 --> 00:03:17,259
+explain changes,
+
+85
+00:03:17,509 --> 00:03:20,350
+which will pull up the AI duck assistant
+
+86
+00:03:20,710 --> 00:03:25,639
+and explain to you what changes were made and why we prefer
+
+87
+00:03:25,910 --> 00:03:27,509
+those stylistic changes.
+
+88
+00:03:27,669 --> 00:03:27,940
+Of course,
+
+89
+00:03:27,949 --> 00:03:28,940
+this is also
+
+90
+00:03:29,229 --> 00:03:30,580
+a subjective thing,
+
+91
+00:03:30,750 --> 00:03:35,699
+so your idea of style might be slightly different than what we typically
+
+92
+00:03:36,059 --> 00:03:36,429
+expect,
+
+93
+00:03:36,509 --> 00:03:36,809
+but
+
+94
+00:03:37,139 --> 00:03:40,610
+That's just to give you a look at what changes we expect.
+
+95
+00:03:41,059 --> 00:03:43,559
+You can also hit apply changes in that corner,
+
+96
+00:03:43,860 --> 00:03:45,889
+and that will fix your code for you.
+
+97
+00:03:46,779 --> 00:03:48,729
+We also have Design 50.
+
+98
+00:03:49,179 --> 00:03:52,929
+Design again is another one of these axes that we grade things on,
+
+99
+00:03:53,220 --> 00:03:53,500
+um,
+
+100
+00:03:53,550 --> 00:03:56,410
+and design is referring to how well
+
+101
+00:03:56,619 --> 00:03:57,679
+does your code
+
+102
+00:03:58,139 --> 00:03:58,940
+actually work.
+
+103
+00:03:59,100 --> 00:04:00,190
+So it might be correct,
+
+104
+00:04:00,259 --> 00:04:02,770
+it might do all the things it's supposed to do,
+
+105
+00:04:03,100 --> 00:04:04,449
+but is it efficient?
+
+106
+00:04:05,139 --> 00:04:06,050
+Is it doing,
+
+107
+00:04:06,320 --> 00:04:06,970
+um,
+
+108
+00:04:07,339 --> 00:04:09,970
+what you want in an effective way?
+
+109
+00:04:11,100 --> 00:04:12,750
+So if you hit Design 50,
+
+110
+00:04:13,000 --> 00:04:14,429
+that will give you,
+
+111
+00:04:14,639 --> 00:04:14,910
+uh,
+
+112
+00:04:14,919 --> 00:04:18,548
+that will pull up CS50.AI and give you some feedback on your code.
+
+113
+00:04:20,278 --> 00:04:22,998
+We also have this explained highlighted code
+
+114
+00:04:23,289 --> 00:04:23,838
+feature.
+
+115
+00:04:23,968 --> 00:04:25,938
+So if you highlight any pieces of code,
+
+116
+00:04:26,009 --> 00:04:28,729
+maybe from the distribution code you're not sure about,
+
+117
+00:04:29,049 --> 00:04:30,128
+you can highlight it,
+
+118
+00:04:30,289 --> 00:04:31,079
+right click it,
+
+119
+00:04:31,329 --> 00:04:34,079
+and click this explain highlighted code bit,
+
+120
+00:04:34,368 --> 00:04:37,759
+and that will with CS5DAI explain to you
+
+121
+00:04:38,289 --> 00:04:40,558
+what that piece of code is doing.
+
+122
+00:04:42,839 --> 00:04:42,859
+All right,
+
+123
+00:04:44,070 --> 00:04:48,260
+so let's get into some of the nitty gritty of C
+
+124
+00:04:48,549 --> 00:04:49,589
+with variables,
+
+125
+00:04:49,790 --> 00:04:50,380
+types,
+
+126
+00:04:50,709 --> 00:04:51,220
+inputs,
+
+127
+00:04:51,230 --> 00:04:52,149
+and printing.
+
+128
+00:04:53,880 --> 00:04:53,899
+All right.
+
+129
+00:04:55,470 --> 00:04:56,089
+So,
+
+130
+00:04:56,630 --> 00:04:58,779
+like you've seen last week in Scratch,
+
+131
+00:04:59,070 --> 00:05:02,239
+we had this one green flag click to say hello world.
+
+132
+00:05:02,269 --> 00:05:04,420
+It's a pretty basic Scratch program,
+
+133
+00:05:04,670 --> 00:05:09,140
+and it had the effect of this scratch cat saying hello world.
+
+134
+00:05:10,750 --> 00:05:11,739
+This week,
+
+135
+00:05:12,109 --> 00:05:14,549
+we're transitioning into C,
+
+136
+00:05:14,630 --> 00:05:17,380
+which is this more text-based language,
+
+137
+00:05:17,859 --> 00:05:18,059
+um,
+
+138
+00:05:18,070 --> 00:05:18,459
+but
+
+139
+00:05:18,790 --> 00:05:21,700
+these two things are still doing the exact same thing,
+
+140
+00:05:21,910 --> 00:05:23,890
+despite the one on the right looking a little
+
+141
+00:05:23,890 --> 00:05:26,619
+bit more cryptic with a little bit more syntax.
+
+142
+00:05:26,910 --> 00:05:26,950
+Um,
+
+143
+00:05:27,109 --> 00:05:29,579
+but hopefully over the course of this week,
+
+144
+00:05:29,750 --> 00:05:32,029
+you'll get a little bit more comfortable with
+
+145
+00:05:32,029 --> 00:05:35,019
+seeing this and and understanding what that means.
+
+146
+00:05:37,630 --> 00:05:41,899
+To just demystify some of the things you might already be wondering about
+
+147
+00:05:42,350 --> 00:05:48,579
+in Main Void is you can think of the equivalent to this one green flag clicked block.
+
+148
+00:05:49,070 --> 00:05:50,429
+So that's what
+
+149
+00:05:50,769 --> 00:05:53,660
+function that runs when you compile a file.
+
+150
+00:05:54,000 --> 00:05:54,739
+And so
+
+151
+00:05:55,109 --> 00:05:56,899
+similar to the one green flag clicked,
+
+152
+00:05:57,070 --> 00:05:59,299
+that's the code that will be run.
+
+153
+00:06:00,279 --> 00:06:01,040
+Um,
+
+154
+00:06:01,559 --> 00:06:01,720
+next,
+
+155
+00:06:01,760 --> 00:06:03,529
+we also have header files,
+
+156
+00:06:03,589 --> 00:06:04,420
+and so
+
+157
+00:06:05,119 --> 00:06:08,329
+this hashtag includes standardio.h.
+
+158
+00:06:08,799 --> 00:06:09,000
+Uh,
+
+159
+00:06:09,119 --> 00:06:09,670
+this is
+
+160
+00:06:09,850 --> 00:06:12,250
+what we use to import libraries.
+
+161
+00:06:12,600 --> 00:06:14,309
+So standardio.H
+
+162
+00:06:14,869 --> 00:06:15,350
+um,
+
+163
+00:06:15,519 --> 00:06:17,880
+is a library in C
+
+164
+00:06:18,160 --> 00:06:20,380
+and it contains a lot of different functions,
+
+165
+00:06:20,559 --> 00:06:23,079
+one of which is the print F function.
+
+166
+00:06:23,399 --> 00:06:23,790
+So,
+
+167
+00:06:23,959 --> 00:06:25,290
+when we want to use print F,
+
+168
+00:06:25,679 --> 00:06:28,579
+we also have to make sure we include this library.
+
+169
+00:06:31,089 --> 00:06:34,899
+If you're ever wondering about what functions are included
+
+170
+00:06:35,149 --> 00:06:39,100
+and what libraries and what sorts of functions you have available to you,
+
+171
+00:06:39,200 --> 00:06:42,160
+you can always go to manual.cs50.io
+
+172
+00:06:43,230 --> 00:06:44,619
+and this website
+
+173
+00:06:44,869 --> 00:06:47,540
+has some of the more frequently used,
+
+174
+00:06:47,829 --> 00:06:48,140
+uh,
+
+175
+00:06:48,149 --> 00:06:48,899
+functions
+
+176
+00:06:49,589 --> 00:06:52,989
+in the frequently used libraries that we like to use in CS 50.
+
+177
+00:06:53,459 --> 00:06:56,450
+And they give you some explanations on
+
+178
+00:06:56,820 --> 00:06:58,579
+what inputs these functions take,
+
+179
+00:06:58,820 --> 00:07:00,209
+what they're used for,
+
+180
+00:07:00,579 --> 00:07:02,769
+and how you can get started with using them.
+
+181
+00:07:05,149 --> 00:07:05,500
+OK,
+
+182
+00:07:05,739 --> 00:07:07,850
+so let's talk about using variables.
+
+183
+00:07:08,260 --> 00:07:08,649
+So
+
+184
+00:07:08,859 --> 00:07:12,609
+you might recall this scratch program from lecture.
+
+185
+00:07:12,950 --> 00:07:13,450
+Um,
+
+186
+00:07:13,579 --> 00:07:14,459
+if you see here,
+
+187
+00:07:14,489 --> 00:07:17,809
+it's slightly different from the one that you saw just a second ago.
+
+188
+00:07:18,100 --> 00:07:19,679
+We have one green flag clicked,
+
+189
+00:07:20,019 --> 00:07:21,649
+set name to David,
+
+190
+00:07:21,899 --> 00:07:22,760
+then say
+
+191
+00:07:23,179 --> 00:07:24,269
+join hello,
+
+192
+00:07:24,369 --> 00:07:25,179
+comma name.
+
+193
+00:07:25,890 --> 00:07:27,230
+So what we're doing here is
+
+194
+00:07:27,399 --> 00:07:29,709
+we have a name variable,
+
+195
+00:07:29,880 --> 00:07:32,190
+and we're setting that to the value David,
+
+196
+00:07:33,079 --> 00:07:33,510
+then
+
+197
+00:07:33,799 --> 00:07:34,480
+saying,
+
+198
+00:07:34,910 --> 00:07:35,589
+hello,
+
+199
+00:07:35,839 --> 00:07:38,109
+and then whatever is in that name variable.
+
+200
+00:07:38,480 --> 00:07:40,070
+That has a side effect of
+
+201
+00:07:40,429 --> 00:07:42,390
+the scratch cat saying hello David,
+
+202
+00:07:42,640 --> 00:07:43,329
+as we'd like.
+
+203
+00:07:44,029 --> 00:07:44,649
+And so,
+
+204
+00:07:44,779 --> 00:07:47,570
+this idea of having something
+
+205
+00:07:47,899 --> 00:07:51,730
+like name that has some sort of value associated with it,
+
+206
+00:07:52,059 --> 00:07:54,260
+that's what we're trying to do with variables.
+
+207
+00:07:55,119 --> 00:07:57,000
+So we can do the same thing and see
+
+208
+00:07:57,410 --> 00:07:59,660
+um of course it does look a little bit more cryptic,
+
+209
+00:07:59,720 --> 00:08:00,119
+but
+
+210
+00:08:00,500 --> 00:08:03,440
+hopefully you're seeing some of these parallels between these.
+
+211
+00:08:03,570 --> 00:08:05,000
+So we have this
+
+212
+00:08:05,649 --> 00:08:08,510
+line 6 string name equals David,
+
+213
+00:08:08,609 --> 00:08:10,600
+similar to set name to David,
+
+214
+00:08:11,010 --> 00:08:12,239
+and then printing
+
+215
+00:08:12,559 --> 00:08:18,179
+hello with that name variable and we'll look a little bit closer at what
+
+216
+00:08:18,609 --> 00:08:19,170
+this
+
+217
+00:08:19,559 --> 00:08:21,200
+line actually means.
+
+218
+00:08:23,510 --> 00:08:25,559
+So going back to this idea of a variable,
+
+219
+00:08:26,410 --> 00:08:28,000
+we can deconstruct it like this,
+
+220
+00:08:28,290 --> 00:08:28,660
+um,
+
+221
+00:08:28,769 --> 00:08:30,959
+you have string name equals
+
+222
+00:08:31,290 --> 00:08:31,609
+David,
+
+223
+00:08:31,690 --> 00:08:32,679
+semicolon,
+
+224
+00:08:33,010 --> 00:08:34,659
+and you can think of this as just
+
+225
+00:08:34,969 --> 00:08:36,549
+creating a variable
+
+226
+00:08:36,849 --> 00:08:41,710
+that's that little box there in the corner called name that stores the value,
+
+227
+00:08:42,030 --> 00:08:42,369
+um,
+
+228
+00:08:42,380 --> 00:08:43,169
+a string
+
+229
+00:08:43,609 --> 00:08:44,280
+called David.
+
+230
+00:08:46,909 --> 00:08:48,340
+So I first ask,
+
+231
+00:08:48,590 --> 00:08:48,750
+you know,
+
+232
+00:08:48,989 --> 00:08:49,429
+you can think,
+
+233
+00:08:49,510 --> 00:08:51,150
+take a second and think about this for yourself.
+
+234
+00:08:51,390 --> 00:08:52,140
+Why does she
+
+235
+00:08:53,030 --> 00:08:54,429
+care about data types?
+
+236
+00:08:54,789 --> 00:08:55,590
+The data type,
+
+237
+00:08:55,710 --> 00:08:57,890
+in this case was a string.
+
+238
+00:08:58,950 --> 00:09:00,020
+So we can think for a second,
+
+239
+00:09:00,030 --> 00:09:00,289
+like,
+
+240
+00:09:00,299 --> 00:09:03,309
+why do we need to even mention that it's a string?
+
+241
+00:09:03,390 --> 00:09:04,380
+Why is that important?
+
+242
+00:09:05,369 --> 00:09:06,859
+I'll give you a second to think about that.
+
+243
+00:09:10,349 --> 00:09:13,280
+So if we remember that all information
+
+244
+00:09:13,559 --> 00:09:15,809
+in this in computers are stored
+
+245
+00:09:16,039 --> 00:09:16,909
+in bytes,
+
+246
+00:09:17,039 --> 00:09:17,669
+which are,
+
+247
+00:09:18,159 --> 00:09:18,760
+for example,
+
+248
+00:09:18,840 --> 00:09:19,750
+this is a byte.
+
+249
+00:09:20,880 --> 00:09:22,159
+We also remember that
+
+250
+00:09:22,520 --> 00:09:25,000
+this could represent a number,
+
+251
+00:09:25,150 --> 00:09:26,130
+like an integer.
+
+252
+00:09:27,010 --> 00:09:27,599
+In this case,
+
+253
+00:09:27,609 --> 00:09:28,859
+65
+
+254
+00:09:29,330 --> 00:09:33,020
+at the same time the same bye could also convey
+
+255
+00:09:33,729 --> 00:09:35,239
+the capital letter A,
+
+256
+00:09:35,489 --> 00:09:35,669
+right?
+
+257
+00:09:35,789 --> 00:09:36,549
+We remember
+
+258
+00:09:36,849 --> 00:09:42,070
+um in with the Asy table we've assigned certain letters to certain
+
+259
+00:09:42,369 --> 00:09:43,690
+um numbers.
+
+260
+00:09:44,330 --> 00:09:45,530
+And that's how we know
+
+261
+00:09:45,700 --> 00:09:46,809
+whether or not something
+
+262
+00:09:47,020 --> 00:09:47,510
+is,
+
+263
+00:09:47,539 --> 00:09:47,700
+say,
+
+264
+00:09:47,710 --> 00:09:51,169
+a char or an integer.
+
+265
+00:09:51,500 --> 00:09:52,090
+So
+
+266
+00:09:53,140 --> 00:09:56,780
+these things can have different meanings in the computer and
+
+267
+00:09:56,780 --> 00:09:59,010
+so it's up to us to tell the computer,
+
+268
+00:09:59,340 --> 00:09:59,489
+hey,
+
+269
+00:09:59,500 --> 00:10:01,210
+this is supposed to be a letter,
+
+270
+00:10:01,460 --> 00:10:01,979
+or hey,
+
+271
+00:10:01,989 --> 00:10:03,859
+this is supposed to be an integer.
+
+272
+00:10:05,869 --> 00:10:06,419
+OK,
+
+273
+00:10:06,729 --> 00:10:08,679
+so let's move on to another example here.
+
+274
+00:10:08,969 --> 00:10:09,719
+Let's say
+
+275
+00:10:09,969 --> 00:10:14,119
+you were trying to create some sort of personal wallet
+
+276
+00:10:14,530 --> 00:10:16,690
+tracking finance app.
+
+277
+00:10:17,250 --> 00:10:20,119
+One of the variables you might need to keep track of
+
+278
+00:10:20,409 --> 00:10:22,770
+is like a person's balance,
+
+279
+00:10:22,809 --> 00:10:25,039
+how much money do they currently have?
+
+280
+00:10:26,200 --> 00:10:26,559
+So,
+
+281
+00:10:26,570 --> 00:10:28,239
+let's create a variable for that.
+
+282
+00:10:29,200 --> 00:10:30,630
+Maybe we call it balance
+
+283
+00:10:31,039 --> 00:10:31,549
+to say like,
+
+284
+00:10:31,559 --> 00:10:33,270
+this is how much money I currently have.
+
+285
+00:10:34,119 --> 00:10:37,830
+And balance here is the name of the variable.
+
+286
+00:10:39,239 --> 00:10:41,030
+Integer is the type,
+
+287
+00:10:41,280 --> 00:10:43,109
+so I've set this to be an integer type.
+
+288
+00:10:44,309 --> 00:10:48,400
+And then I've set the value of this variable to be 20.
+
+289
+00:10:50,289 --> 00:10:53,090
+Here something to note is that while we normally
+
+290
+00:10:53,450 --> 00:10:58,919
+think of equal sign in like everyday language as like this thing equals this thing,
+
+291
+00:10:59,369 --> 00:10:59,799
+here,
+
+292
+00:10:59,919 --> 00:11:03,239
+we want to think of it as an assignment operator.
+
+293
+00:11:03,650 --> 00:11:04,919
+So we're assigning
+
+294
+00:11:05,169 --> 00:11:07,080
+the value on the right 20
+
+295
+00:11:07,650 --> 00:11:08,119
+to the
+
+296
+00:11:08,250 --> 00:11:09,690
+the variable on the left,
+
+297
+00:11:09,770 --> 00:11:10,919
+which is balance.
+
+298
+00:11:13,679 --> 00:11:14,510
+So in all,
+
+299
+00:11:14,659 --> 00:11:15,010
+um,
+
+300
+00:11:15,020 --> 00:11:16,619
+when you look at this statement,
+
+301
+00:11:16,710 --> 00:11:18,619
+you can think of it in plain
+
+302
+00:11:18,969 --> 00:11:22,489
+English language as create an integer named balance
+
+303
+00:11:22,820 --> 00:11:24,460
+that gets the value 20.
+
+304
+00:11:27,929 --> 00:11:30,179
+Another question you might think about is,
+
+305
+00:11:30,630 --> 00:11:33,429
+why does our choice of data type matter?
+
+306
+00:11:34,210 --> 00:11:36,789
+So in this balance situation,
+
+307
+00:11:37,549 --> 00:11:38,280
+why,
+
+308
+00:11:38,630 --> 00:11:39,010
+why would I,
+
+309
+00:11:39,190 --> 00:11:40,330
+why might I pick in,
+
+310
+00:11:40,549 --> 00:11:42,859
+why might I pick a different data type
+
+311
+00:11:44,349 --> 00:11:45,010
+and
+
+312
+00:11:45,390 --> 00:11:46,780
+what's the consequence of that?
+
+313
+00:11:48,260 --> 00:11:50,140
+So you can think about that for a second.
+
+314
+00:11:50,770 --> 00:11:52,750
+Something you might be noticing is,
+
+315
+00:11:53,130 --> 00:11:53,489
+um,
+
+316
+00:11:53,530 --> 00:11:53,750
+you know,
+
+317
+00:11:54,169 --> 00:11:55,820
+sometimes I don't always have,
+
+318
+00:11:56,169 --> 00:11:56,479
+uh,
+
+319
+00:11:56,489 --> 00:11:59,679
+like exactly $20 maybe I have like 50 cents,
+
+320
+00:11:59,969 --> 00:12:03,039
+and an integer may not be the best type
+
+321
+00:12:03,250 --> 00:12:04,770
+to represent that.
+
+322
+00:12:05,260 --> 00:12:05,419
+Uh,
+
+323
+00:12:05,460 --> 00:12:05,979
+in this case,
+
+324
+00:12:06,059 --> 00:12:07,299
+maybe I decide,
+
+325
+00:12:07,460 --> 00:12:07,929
+oh,
+
+326
+00:12:08,260 --> 00:12:10,090
+balance should really be afloat,
+
+327
+00:12:10,210 --> 00:12:12,690
+that way I can capture the decimals.
+
+328
+00:12:13,099 --> 00:12:13,650
+Um,
+
+329
+00:12:14,219 --> 00:12:17,849
+so all of these decisions are things that us programmers are going to make
+
+330
+00:12:18,260 --> 00:12:20,349
+while deciding like what is best
+
+331
+00:12:21,020 --> 00:12:24,390
+for this variable in this situation where I'm trying,
+
+332
+00:12:24,700 --> 00:12:27,369
+where I'm trying to use balance to convey
+
+333
+00:12:27,940 --> 00:12:30,489
+certain information or do certain things with.
+
+334
+00:12:33,039 --> 00:12:33,059
+All right.
+
+335
+00:12:34,429 --> 00:12:34,919
+So,
+
+336
+00:12:35,229 --> 00:12:37,469
+the first line here in balance equals 20,
+
+337
+00:12:37,549 --> 00:12:39,260
+that's what we usually do when we're,
+
+338
+00:12:39,510 --> 00:12:39,739
+uh,
+
+339
+00:12:39,750 --> 00:12:41,299
+assigning a value
+
+340
+00:12:41,549 --> 00:12:41,979
+to
+
+341
+00:12:42,109 --> 00:12:43,349
+a new variable.
+
+342
+00:12:43,630 --> 00:12:45,739
+But if we want to go back and update that,
+
+343
+00:12:45,869 --> 00:12:48,859
+so maybe you pick up $5 on the ground,
+
+344
+00:12:49,229 --> 00:12:49,590
+um,
+
+345
+00:12:49,630 --> 00:12:51,500
+you also want to be able to update
+
+346
+00:12:51,710 --> 00:12:52,200
+that
+
+347
+00:12:52,429 --> 00:12:53,109
+variable.
+
+348
+00:12:53,229 --> 00:12:55,020
+So balance equals 25,
+
+349
+00:12:55,349 --> 00:12:56,409
+we assign,
+
+350
+00:12:56,750 --> 00:12:57,869
+right with the equal sign,
+
+351
+00:12:57,909 --> 00:12:59,440
+that's our assignment operator.
+
+352
+00:12:59,929 --> 00:13:01,309
+We will assign 25
+
+353
+00:13:01,570 --> 00:13:03,369
+to the variable balance.
+
+354
+00:13:06,669 --> 00:13:06,679
+OK.
+
+355
+00:13:07,419 --> 00:13:10,520
+We can also do a number of operations on
+
+356
+00:13:10,780 --> 00:13:11,570
+our variables,
+
+357
+00:13:11,580 --> 00:13:14,619
+just like how you've normally done in math.
+
+358
+00:13:15,719 --> 00:13:16,950
+We can increment.
+
+359
+00:13:17,320 --> 00:13:19,880
+So if I wanted to add one to balance,
+
+360
+00:13:19,919 --> 00:13:22,229
+I could do balance equals bounce plus one.
+
+361
+00:13:22,760 --> 00:13:23,789
+Or another
+
+362
+00:13:24,039 --> 00:13:24,770
+easier way,
+
+363
+00:13:25,159 --> 00:13:28,549
+quicker way of doing so would be balance plus plus semicolon.
+
+364
+00:13:28,799 --> 00:13:31,450
+So both these things will increment balance by one,
+
+365
+00:13:32,400 --> 00:13:32,830
+but
+
+366
+00:13:33,119 --> 00:13:33,700
+um
+
+367
+00:13:34,039 --> 00:13:36,770
+the bottom one is usually what people will use
+
+368
+00:13:36,770 --> 00:13:38,919
+if you're trying to increment just by one.
+
+369
+00:13:40,590 --> 00:13:42,710
+Same thing can be said for decrementing.
+
+370
+00:13:42,830 --> 00:13:45,260
+So if you want to subtract one from 20,
+
+371
+00:13:45,590 --> 00:13:46,580
+then you could do
+
+372
+00:13:46,830 --> 00:13:48,580
+balance equals -1
+
+373
+00:13:48,909 --> 00:13:49,500
+or
+
+374
+00:13:49,750 --> 00:13:51,179
+balance minus minus.
+
+375
+00:13:51,349 --> 00:13:52,349
+Both do the same thing.
+
+376
+00:13:54,479 --> 00:13:56,059
+We also have multiplication,
+
+377
+00:13:56,380 --> 00:13:57,989
+so same as usual.
+
+378
+00:13:58,080 --> 00:13:59,330
+If I wanted to do,
+
+379
+00:13:59,500 --> 00:13:59,729
+uh,
+
+380
+00:13:59,739 --> 00:14:00,650
+if I wanted to
+
+381
+00:14:00,859 --> 00:14:02,849
+multiply balance by 20 or
+
+382
+00:14:03,020 --> 00:14:03,140
+yeah,
+
+383
+00:14:03,260 --> 00:14:03,969
+by 2,
+
+384
+00:14:04,380 --> 00:14:07,229
+then I can do balance times 2,
+
+385
+00:14:07,539 --> 00:14:08,169
+or
+
+386
+00:14:08,419 --> 00:14:11,330
+I could do balance times equals 2.
+
+387
+00:14:11,580 --> 00:14:13,739
+And so those two lines will do the same thing.
+
+388
+00:14:15,309 --> 00:14:15,830
+Similarly,
+
+389
+00:14:15,869 --> 00:14:16,510
+we have division,
+
+390
+00:14:16,710 --> 00:14:18,940
+so balance equals balance divided by 4.
+
+391
+00:14:19,270 --> 00:14:19,900
+That will
+
+392
+00:14:20,229 --> 00:14:21,700
+set balance to 5,
+
+393
+00:14:21,859 --> 00:14:23,219
+or you can do balance
+
+394
+00:14:23,510 --> 00:14:26,479
+divided or slash equals 4,
+
+395
+00:14:26,869 --> 00:14:27,659
+and that
+
+396
+00:14:27,950 --> 00:14:28,700
+will also
+
+397
+00:14:28,909 --> 00:14:29,979
+give you 5.
+
+398
+00:14:31,799 --> 00:14:33,570
+Another thing to note here,
+
+399
+00:14:34,229 --> 00:14:34,539
+um,
+
+400
+00:14:34,630 --> 00:14:38,500
+let's say you have integer balance equals 20 and you're dividing
+
+401
+00:14:38,789 --> 00:14:39,780
+by 3.
+
+402
+00:14:40,429 --> 00:14:41,780
+What is that going to return?
+
+403
+00:14:42,950 --> 00:14:43,419
+So
+
+404
+00:14:43,669 --> 00:14:45,239
+if you were just doing the math,
+
+405
+00:14:45,510 --> 00:14:45,789
+um,
+
+406
+00:14:45,830 --> 00:14:47,820
+you might have like a decimal value,
+
+407
+00:14:48,190 --> 00:14:48,789
+but
+
+408
+00:14:49,190 --> 00:14:51,229
+what is this going to be?
+
+409
+00:14:51,349 --> 00:14:53,419
+You can think about it for yourself in a second.
+
+410
+00:14:55,510 --> 00:14:56,469
+So what this
+
+411
+00:14:56,679 --> 00:14:57,359
+balance
+
+412
+00:14:57,520 --> 00:15:00,390
+variable will end up being is actually 6.
+
+413
+00:15:00,960 --> 00:15:01,840
+And why is that?
+
+414
+00:15:01,880 --> 00:15:03,590
+Why is it not 7
+
+415
+00:15:03,880 --> 00:15:05,710
+or some decimal value?
+
+416
+00:15:06,440 --> 00:15:06,679
+Well,
+
+417
+00:15:06,799 --> 00:15:07,869
+this slash,
+
+418
+00:15:08,039 --> 00:15:09,909
+which is our floor division,
+
+419
+00:15:10,159 --> 00:15:11,789
+when done on integers,
+
+420
+00:15:11,799 --> 00:15:16,570
+is going to round down even though it may be closer to.
+
+421
+00:15:16,969 --> 00:15:17,400
+Um,
+
+422
+00:15:17,580 --> 00:15:18,919
+the next highest number.
+
+423
+00:15:19,090 --> 00:15:20,090
+And so that's something to note,
+
+424
+00:15:20,289 --> 00:15:24,400
+especially when you're completing the cache portion of
+
+425
+00:15:24,650 --> 00:15:25,710
+the problem set.
+
+426
+00:15:26,369 --> 00:15:27,320
+So something to know.
+
+427
+00:15:27,489 --> 00:15:28,520
+This depends on
+
+428
+00:15:28,739 --> 00:15:30,000
+uh operators,
+
+429
+00:15:30,210 --> 00:15:33,719
+what they are doing will depend on the type.
+
+430
+00:15:35,729 --> 00:15:39,250
+We also have this operator called the modulo operator,
+
+431
+00:15:39,320 --> 00:15:41,150
+so that's the percent sign here.
+
+432
+00:15:41,489 --> 00:15:42,849
+If you haven't seen this before,
+
+433
+00:15:42,919 --> 00:15:44,559
+it basically gives you
+
+434
+00:15:44,849 --> 00:15:45,950
+the remainder
+
+435
+00:15:46,489 --> 00:15:47,119
+of
+
+436
+00:15:47,440 --> 00:15:48,690
+the variable you're working with.
+
+437
+00:15:48,809 --> 00:15:52,450
+So if I did balance equals balance module of 6,
+
+438
+00:15:52,849 --> 00:15:54,070
+basically we're saying,
+
+439
+00:15:54,489 --> 00:15:58,309
+what is the remainder when I divide balance by 6,
+
+440
+00:15:58,409 --> 00:15:58,690
+so.
+
+441
+00:15:59,369 --> 00:16:00,359
+In this case,
+
+442
+00:16:01,130 --> 00:16:02,210
+20 divided by 6,
+
+443
+00:16:02,289 --> 00:16:02,489
+you know,
+
+444
+00:16:02,530 --> 00:16:02,840
+you have,
+
+445
+00:16:03,289 --> 00:16:05,479
+it fits into 23 times,
+
+446
+00:16:05,650 --> 00:16:06,609
+but we have 2 leftovers,
+
+447
+00:16:06,690 --> 00:16:07,119
+so
+
+448
+00:16:07,849 --> 00:16:09,820
+we get balance equals 2.
+
+449
+00:16:11,969 --> 00:16:11,989
+All right.
+
+450
+00:16:13,780 --> 00:16:16,900
+So in all we have these operators,
+
+451
+00:16:17,229 --> 00:16:21,859
+we just looked at a lot of these um top operators plus minus,
+
+452
+00:16:22,070 --> 00:16:24,299
+multiply divide and modulo.
+
+453
+00:16:24,750 --> 00:16:29,020
+We also have some relational operators which you'll see when we're trying to create
+
+454
+00:16:29,239 --> 00:16:29,700
+um
+
+455
+00:16:29,909 --> 00:16:31,460
+like Boolean expressions
+
+456
+00:16:31,830 --> 00:16:35,059
+and logical operators which also come into play with
+
+457
+00:16:35,390 --> 00:16:37,179
+creating boolean expressions.
+
+458
+00:16:39,219 --> 00:16:39,700
+OK.
+
+459
+00:16:40,630 --> 00:16:45,479
+So we've seen that we can set values to variables like balance equals 20,
+
+460
+00:16:45,880 --> 00:16:49,390
+but let's say we wanted to get input from the user.
+
+461
+00:16:50,179 --> 00:16:50,739
+So,
+
+462
+00:16:51,020 --> 00:16:52,010
+in this case,
+
+463
+00:16:52,140 --> 00:16:53,010
+we've used
+
+464
+00:16:53,219 --> 00:16:54,570
+a get in function,
+
+465
+00:16:54,739 --> 00:16:57,369
+which is something included in CS50.H
+
+466
+00:16:57,820 --> 00:16:58,409
+and
+
+467
+00:16:59,260 --> 00:16:59,960
+we have
+
+468
+00:17:00,299 --> 00:17:02,299
+the integer type,
+
+469
+00:17:03,020 --> 00:17:03,440
+again,
+
+470
+00:17:03,619 --> 00:17:04,969
+balance is the name,
+
+471
+00:17:05,300 --> 00:17:07,069
+and then we're assigning it to
+
+472
+00:17:07,219 --> 00:17:08,650
+not just a value now,
+
+473
+00:17:09,060 --> 00:17:09,250
+um,
+
+474
+00:17:09,260 --> 00:17:11,250
+it's the value that this function,
+
+475
+00:17:11,420 --> 00:17:11,939
+get in.
+
+476
+00:17:12,780 --> 00:17:14,290
+Returns.
+
+477
+00:17:14,699 --> 00:17:21,098
+So get it will prompt the user to enter a balance and that value will be stored in the
+
+478
+00:17:21,420 --> 00:17:23,010
+variable called balance.
+
+479
+00:17:25,540 --> 00:17:26,180
+So again,
+
+480
+00:17:26,510 --> 00:17:28,719
+get into is the name of the function.
+
+481
+00:17:30,359 --> 00:17:32,739
+And then this is the function input.
+
+482
+00:17:32,989 --> 00:17:33,420
+So
+
+483
+00:17:33,790 --> 00:17:34,260
+get in,
+
+484
+00:17:34,349 --> 00:17:36,239
+you can look at the manual for this,
+
+485
+00:17:36,349 --> 00:17:38,380
+but get in will take in
+
+486
+00:17:38,670 --> 00:17:41,510
+um a string of like what you want
+
+487
+00:17:41,869 --> 00:17:43,420
+the input to say
+
+488
+00:17:43,869 --> 00:17:46,369
+before the user types in what they want to
+
+489
+00:17:46,949 --> 00:17:48,060
+put the value as.
+
+490
+00:17:49,790 --> 00:17:49,800
+Alright,
+
+491
+00:17:51,739 --> 00:17:53,369
+so if we're printing out
+
+492
+00:17:53,540 --> 00:17:57,829
+this balance that was given to us or we have in sort in a value,
+
+493
+00:17:58,300 --> 00:18:01,729
+we might have a print statement that looks a bit like this.
+
+494
+00:18:01,979 --> 00:18:03,369
+So we have print F
+
+495
+00:18:04,219 --> 00:18:04,869
+string,
+
+496
+00:18:04,979 --> 00:18:06,150
+current balance,
+
+497
+00:18:06,459 --> 00:18:07,099
+and then
+
+498
+00:18:07,540 --> 00:18:08,530
+dollar sign.
+
+499
+00:18:09,890 --> 00:18:11,030
+Percent I.
+
+500
+00:18:12,209 --> 00:18:12,939
+Backslash and.
+
+501
+00:18:13,859 --> 00:18:16,170
+So that combination of
+
+502
+00:18:16,459 --> 00:18:17,290
+characters,
+
+503
+00:18:17,819 --> 00:18:19,650
+we'll talk about what that means.
+
+504
+00:18:22,089 --> 00:18:23,449
+So percent I in this case,
+
+505
+00:18:23,569 --> 00:18:25,569
+we're calling it a format code.
+
+506
+00:18:25,930 --> 00:18:26,150
+Um,
+
+507
+00:18:26,170 --> 00:18:28,420
+this format code is basically acting
+
+508
+00:18:28,689 --> 00:18:29,239
+as
+
+509
+00:18:29,449 --> 00:18:30,560
+a placeholder
+
+510
+00:18:30,969 --> 00:18:35,170
+that will be substituted with the value that we want to use.
+
+511
+00:18:35,609 --> 00:18:35,760
+So,
+
+512
+00:18:35,770 --> 00:18:36,640
+in this case,
+
+513
+00:18:37,290 --> 00:18:38,500
+balance is an integer,
+
+514
+00:18:38,650 --> 00:18:42,180
+which is why we're using the format code percent I
+
+515
+00:18:42,489 --> 00:18:43,520
+as a placeholder,
+
+516
+00:18:43,890 --> 00:18:47,239
+and then it will be substituted when it's printed with
+
+517
+00:18:47,689 --> 00:18:48,089
+balance,
+
+518
+00:18:48,199 --> 00:18:49,359
+the value of balance.
+
+519
+00:18:51,420 --> 00:18:55,530
+There are different kinds of format codes you can use depending on the type
+
+520
+00:18:55,859 --> 00:18:57,569
+of variable you have,
+
+521
+00:18:57,859 --> 00:19:00,089
+and so that's just something to note if you're
+
+522
+00:19:00,089 --> 00:19:02,839
+trying to print something out of a different type.
+
+523
+00:19:04,869 --> 00:19:04,890
+All right.
+
+524
+00:19:06,689 --> 00:19:08,520
+So I've done enough talking here.
+
+525
+00:19:08,689 --> 00:19:10,439
+Let's try to move
+
+526
+00:19:10,729 --> 00:19:11,349
+to
+
+527
+00:19:11,530 --> 00:19:13,109
+our actual coding environment
+
+528
+00:19:13,369 --> 00:19:16,329
+and see how these things work in code.
+
+529
+00:19:16,609 --> 00:19:20,439
+So we're going to move to our CS50.dev coding environment
+
+530
+00:19:20,689 --> 00:19:23,709
+and we're going to try to tackle this first part of the problem set,
+
+531
+00:19:24,329 --> 00:19:25,079
+which is just
+
+532
+00:19:25,359 --> 00:19:27,400
+a simple hello world program.
+
+533
+00:19:29,369 --> 00:19:29,530
+So,
+
+534
+00:19:29,540 --> 00:19:32,170
+I'm gonna first start out by creating this file.
+
+535
+00:19:32,260 --> 00:19:34,510
+So code hello.c.
+
+536
+00:19:35,099 --> 00:19:37,750
+So this is creating a file called hello.c.
+
+537
+00:19:38,260 --> 00:19:38,550
+Now,
+
+538
+00:19:38,599 --> 00:19:40,130
+up here in my text editor,
+
+539
+00:19:40,219 --> 00:19:40,849
+I can
+
+540
+00:19:41,380 --> 00:19:42,989
+write out the code that I want.
+
+541
+00:19:44,000 --> 00:19:44,609
+So
+
+542
+00:19:44,819 --> 00:19:46,410
+I remember we're gonna start out with
+
+543
+00:19:46,780 --> 00:19:47,569
+It Main Void.
+
+544
+00:19:49,650 --> 00:19:51,310
+And then I want to print out.
+
+545
+00:19:53,109 --> 00:19:54,060
+Hello.
+
+546
+00:19:55,530 --> 00:19:55,939
+World.
+
+547
+00:19:57,020 --> 00:19:57,869
+OK.
+
+548
+00:19:59,060 --> 00:20:02,579
+Let's try that out for now and see what happens.
+
+549
+00:20:04,550 --> 00:20:06,390
+So I do slash hello,
+
+550
+00:20:07,550 --> 00:20:09,310
+or first I have to do make hello.
+
+551
+00:20:10,339 --> 00:20:12,260
+To compile this program and see
+
+552
+00:20:12,540 --> 00:20:14,569
+what error is popping up here.
+
+553
+00:20:14,660 --> 00:20:15,209
+We have
+
+554
+00:20:15,660 --> 00:20:18,420
+call to undeclared library function print F.
+
+555
+00:20:19,270 --> 00:20:19,520
+So,
+
+556
+00:20:19,530 --> 00:20:21,079
+if you recall print F
+
+557
+00:20:21,369 --> 00:20:22,800
+is one of these functions
+
+558
+00:20:23,130 --> 00:20:23,560
+that
+
+559
+00:20:23,810 --> 00:20:25,599
+come from a library.
+
+560
+00:20:25,689 --> 00:20:26,280
+And so,
+
+561
+00:20:26,369 --> 00:20:27,400
+in order to use it,
+
+562
+00:20:27,689 --> 00:20:28,880
+we have to make sure
+
+563
+00:20:29,170 --> 00:20:33,989
+we include this library and you can see that the error helpfully gives us that
+
+564
+00:20:34,410 --> 00:20:35,650
+as a reminder.
+
+565
+00:20:35,729 --> 00:20:38,609
+So I'm gonna include standard.O.H.
+
+566
+00:20:40,599 --> 00:20:41,430
+To recompi
+
+567
+00:20:43,810 --> 00:20:43,969
+Great,
+
+568
+00:20:44,050 --> 00:20:44,729
+no error.
+
+569
+00:20:45,130 --> 00:20:46,869
+And then I run.slash hello.
+
+570
+00:20:47,209 --> 00:20:47,719
+We have
+
+571
+00:20:47,859 --> 00:20:48,839
+Hello worlds,
+
+572
+00:20:49,449 --> 00:20:50,719
+but my
+
+573
+00:20:51,290 --> 00:20:51,949
+terminal
+
+574
+00:20:52,449 --> 00:20:54,560
+is starting out on the same line,
+
+575
+00:20:54,689 --> 00:20:55,050
+so.
+
+576
+00:20:55,810 --> 00:20:57,369
+What might I want to do here?
+
+577
+00:20:58,410 --> 00:21:02,260
+I think I should add backslash N to give myself a new line.
+
+578
+00:21:03,449 --> 00:21:04,839
+That way I will
+
+579
+00:21:05,260 --> 00:21:05,880
+start
+
+580
+00:21:06,489 --> 00:21:06,969
+a new line,
+
+581
+00:21:07,050 --> 00:21:08,280
+so oops,
+
+582
+00:21:08,290 --> 00:21:08,780
+OK.
+
+583
+00:21:11,010 --> 00:21:12,329
+Gonna make hello again.
+
+584
+00:21:13,020 --> 00:21:14,010
+slash hello,
+
+585
+00:21:14,420 --> 00:21:16,729
+and it prints out he the world as
+
+586
+00:21:17,099 --> 00:21:17,939
+we hoped.
+
+587
+00:21:18,560 --> 00:21:18,719
+Great.
+
+588
+00:21:19,020 --> 00:21:20,489
+So that's our first step here.
+
+589
+00:21:21,670 --> 00:21:22,869
+We're going to move now
+
+590
+00:21:23,119 --> 00:21:27,339
+to a slightly more complicated version of this program,
+
+591
+00:21:27,680 --> 00:21:28,560
+which is hello,
+
+592
+00:21:28,640 --> 00:21:29,760
+it's me.
+
+593
+00:21:30,589 --> 00:21:32,550
+So when we run this program,
+
+594
+00:21:32,729 --> 00:21:35,119
+our goal is to ask the user
+
+595
+00:21:35,489 --> 00:21:36,439
+what's their name
+
+596
+00:21:36,729 --> 00:21:38,239
+and then print out hello,
+
+597
+00:21:38,479 --> 00:21:39,040
+comma,
+
+598
+00:21:39,209 --> 00:21:39,880
+their name.
+
+599
+00:21:41,089 --> 00:21:41,099
+All
+
+600
+00:21:41,439 --> 00:21:41,790
+right.
+
+601
+00:21:43,530 --> 00:21:44,010
+So
+
+602
+00:21:44,829 --> 00:21:47,500
+I'm just gonna make some edits to this program.
+
+603
+00:21:47,939 --> 00:21:48,770
+First of all,
+
+604
+00:21:48,979 --> 00:21:52,410
+I know we want to ask the user for some input
+
+605
+00:21:52,699 --> 00:21:55,219
+and store that in something like a variable,
+
+606
+00:21:55,260 --> 00:21:55,540
+right?
+
+607
+00:21:56,589 --> 00:21:59,219
+So I'm gonna start out with um string.
+
+608
+00:21:59,630 --> 00:22:00,989
+I'll call it name.
+
+609
+00:22:02,359 --> 00:22:04,800
+And we're gonna get input using
+
+610
+00:22:05,229 --> 00:22:06,329
+get string.
+
+611
+00:22:08,010 --> 00:22:11,630
+And something to note here is get string is one of these functions
+
+612
+00:22:11,920 --> 00:22:15,469
+that actually are included in CS 50's library,
+
+613
+00:22:15,880 --> 00:22:17,650
+so I need to make sure that I include that
+
+614
+00:22:17,959 --> 00:22:18,270
+here.
+
+615
+00:22:22,609 --> 00:22:23,140
+OK.
+
+616
+00:22:24,010 --> 00:22:26,849
+So I'm going to pass in an input to this get string function.
+
+617
+00:22:27,939 --> 00:22:30,150
+So let's say what's your name?
+
+618
+00:22:30,400 --> 00:22:31,150
+question mark.
+
+619
+00:22:32,729 --> 00:22:33,329
+And
+
+620
+00:22:33,579 --> 00:22:34,819
+don't forget that semicolon.
+
+621
+00:22:35,729 --> 00:22:36,709
+And so now,
+
+622
+00:22:36,839 --> 00:22:39,260
+let's see what happens here.
+
+623
+00:22:39,560 --> 00:22:40,989
+If I make hello.
+
+624
+00:22:41,849 --> 00:22:43,439
+Hot slash hello.
+
+625
+00:22:43,959 --> 00:22:45,119
+So asks me what's your name?
+
+626
+00:22:45,189 --> 00:22:46,119
+I'll put Kelly.
+
+627
+00:22:46,689 --> 00:22:46,890
+OK,
+
+628
+00:22:47,000 --> 00:22:48,439
+it's still printing out Hello world.
+
+629
+00:22:48,449 --> 00:22:49,109
+We have some
+
+630
+00:22:49,489 --> 00:22:50,839
+improvement to do here,
+
+631
+00:22:51,060 --> 00:22:52,030
+but that's a good start.
+
+632
+00:22:53,290 --> 00:22:53,910
+So
+
+633
+00:22:54,180 --> 00:22:56,050
+I know that we want to print out hello
+
+634
+00:22:56,219 --> 00:22:58,609
+and then my name instead of world.
+
+635
+00:22:59,180 --> 00:23:00,739
+What if I just put in my name here?
+
+636
+00:23:00,819 --> 00:23:01,849
+I already know my name,
+
+637
+00:23:01,939 --> 00:23:04,430
+so I could say make hello.
+
+638
+00:23:05,750 --> 00:23:06,790
+That slash hello.
+
+639
+00:23:07,839 --> 00:23:08,239
+What's your name?
+
+640
+00:23:08,319 --> 00:23:08,770
+Kelly?
+
+641
+00:23:08,959 --> 00:23:09,130
+Hello,
+
+642
+00:23:09,199 --> 00:23:09,790
+Kelly.
+
+643
+00:23:10,119 --> 00:23:11,540
+So at the first glance that works,
+
+644
+00:23:11,640 --> 00:23:12,000
+right?
+
+645
+00:23:12,079 --> 00:23:12,469
+But
+
+646
+00:23:12,760 --> 00:23:15,150
+if I were to run this again and
+
+647
+00:23:15,359 --> 00:23:16,439
+my name was not Kelly,
+
+648
+00:23:16,520 --> 00:23:17,319
+maybe it's
+
+649
+00:23:17,800 --> 00:23:18,510
+David,
+
+650
+00:23:18,839 --> 00:23:19,599
+it still says hello,
+
+651
+00:23:19,680 --> 00:23:20,079
+Kelly.
+
+652
+00:23:20,979 --> 00:23:21,849
+So
+
+653
+00:23:22,099 --> 00:23:24,670
+I'm not really supposed to be hardcoding this variable,
+
+654
+00:23:24,780 --> 00:23:24,939
+right?
+
+655
+00:23:25,030 --> 00:23:27,489
+That's hard coding means that I'm just
+
+656
+00:23:27,739 --> 00:23:28,420
+giving it
+
+657
+00:23:28,739 --> 00:23:31,260
+the information that I want to rather than
+
+658
+00:23:31,260 --> 00:23:34,650
+having it as something that dynamically will change,
+
+659
+00:23:34,939 --> 00:23:36,010
+like my variable.
+
+660
+00:23:36,859 --> 00:23:38,170
+So what I should be doing here
+
+661
+00:23:38,500 --> 00:23:41,050
+is replacing it with our
+
+662
+00:23:41,459 --> 00:23:42,699
+format code here,
+
+663
+00:23:42,780 --> 00:23:42,969
+per
+
+664
+00:23:43,729 --> 00:23:45,660
+uh S because it's a string.
+
+665
+00:23:46,709 --> 00:23:48,869
+And then passing in this value
+
+666
+00:23:49,229 --> 00:23:49,670
+name,
+
+667
+00:23:49,800 --> 00:23:51,189
+which is what will be
+
+668
+00:23:51,550 --> 00:23:52,069
+um
+
+669
+00:23:52,599 --> 00:23:54,869
+put in where that placeholder is.
+
+670
+00:23:55,780 --> 00:23:57,239
+So let's make this again.
+
+671
+00:24:00,280 --> 00:24:01,229
+What's your name?
+
+672
+00:24:01,449 --> 00:24:02,069
+Kelly?
+
+673
+00:24:02,280 --> 00:24:03,550
+Now it says hello Kelly.
+
+674
+00:24:03,800 --> 00:24:04,979
+I'll try it again with
+
+675
+00:24:05,280 --> 00:24:05,979
+David.
+
+676
+00:24:06,640 --> 00:24:07,790
+And now it says hello dude.
+
+677
+00:24:07,869 --> 00:24:08,260
+So
+
+678
+00:24:08,469 --> 00:24:10,300
+that is what we're hoping for.
+
+679
+00:24:11,420 --> 00:24:12,209
+OK.
+
+680
+00:24:14,920 --> 00:24:16,520
+So let's come back here
+
+681
+00:24:16,810 --> 00:24:19,400
+and try out one more exercise.
+
+682
+00:24:19,969 --> 00:24:22,369
+This is a program called Contacts.
+
+683
+00:24:22,569 --> 00:24:24,880
+We're gonna ask the user for a name,
+
+684
+00:24:25,209 --> 00:24:26,079
+an age,
+
+685
+00:24:26,290 --> 00:24:27,319
+a phone number,
+
+686
+00:24:27,650 --> 00:24:30,000
+and then maybe another value of your choice.
+
+687
+00:24:30,410 --> 00:24:32,280
+So I encourage you to pause here,
+
+688
+00:24:32,650 --> 00:24:36,599
+take a second and try to figure this out on your own before coming back,
+
+689
+00:24:36,930 --> 00:24:37,430
+and
+
+690
+00:24:37,609 --> 00:24:39,130
+we'll do it all together.
+
+691
+00:24:40,500 --> 00:24:40,510
+Alright,
+
+692
+00:24:41,729 --> 00:24:43,040
+so let's move back
+
+693
+00:24:43,300 --> 00:24:43,959
+to.
+
+694
+00:24:44,699 --> 00:24:45,439
+My CS 50.
+
+695
+00:24:45,609 --> 00:24:45,920
+dev.
+
+696
+00:24:46,560 --> 00:24:47,790
+I'm gonna code.
+
+697
+00:24:48,790 --> 00:24:52,060
+Contacts.c to make a new file for this.
+
+698
+00:24:52,650 --> 00:24:53,859
+And the first thing I'll do,
+
+699
+00:24:54,030 --> 00:24:54,510
+as always,
+
+700
+00:24:54,520 --> 00:24:55,670
+is include
+
+701
+00:24:55,989 --> 00:24:57,270
+those libraries that I need.
+
+702
+00:24:57,390 --> 00:24:59,099
+So standard.O.H.
+
+703
+00:25:00,469 --> 00:25:01,699
+I also want
+
+704
+00:25:01,949 --> 00:25:03,160
+um CS 50.
+
+705
+00:25:03,390 --> 00:25:03,790
+H.
+
+706
+00:25:07,319 --> 00:25:08,479
+And now we can
+
+707
+00:25:08,729 --> 00:25:10,160
+start with our main function.
+
+708
+00:25:12,420 --> 00:25:12,439
+All right.
+
+709
+00:25:13,839 --> 00:25:14,569
+And now
+
+710
+00:25:15,849 --> 00:25:19,319
+We know that we want to be prompting the user for certain things,
+
+711
+00:25:19,449 --> 00:25:19,680
+right,
+
+712
+00:25:19,770 --> 00:25:20,119
+so.
+
+713
+00:25:21,109 --> 00:25:21,699
+We had
+
+714
+00:25:21,910 --> 00:25:22,189
+name,
+
+715
+00:25:22,260 --> 00:25:22,540
+age,
+
+716
+00:25:22,630 --> 00:25:23,300
+phone number,
+
+717
+00:25:23,550 --> 00:25:24,500
+value for choice.
+
+718
+00:25:25,560 --> 00:25:26,130
+So
+
+719
+00:25:27,030 --> 00:25:29,469
+I'm just gonna make a note of this to myself.
+
+720
+00:25:29,670 --> 00:25:31,939
+So these two slashes I just did
+
+721
+00:25:32,300 --> 00:25:33,650
+created a comment,
+
+722
+00:25:33,770 --> 00:25:35,369
+and these are things that
+
+723
+00:25:36,140 --> 00:25:39,359
+will help you along the way read your code a little bit better,
+
+724
+00:25:39,459 --> 00:25:41,489
+will help other people who are reading your code,
+
+725
+00:25:41,699 --> 00:25:44,150
+but it doesn't have any actual effect on your code.
+
+726
+00:25:45,020 --> 00:25:45,619
+So I'm gonna name,
+
+727
+00:25:45,630 --> 00:25:45,880
+age,
+
+728
+00:25:45,959 --> 00:25:46,630
+phone number.
+
+729
+00:25:47,400 --> 00:25:49,319
+And maybe location.
+
+730
+00:25:51,410 --> 00:25:52,599
+So first getting the name.
+
+731
+00:25:53,359 --> 00:25:57,430
+This is similar to what we just did before a string name equals
+
+732
+00:25:57,920 --> 00:25:58,969
+get string.
+
+733
+00:25:59,989 --> 00:26:00,010
+Name
+
+734
+00:26:03,069 --> 00:26:05,290
+And then I'm gonna ask for an age.
+
+735
+00:26:05,459 --> 00:26:07,300
+Let's say that's an integer.
+
+736
+00:26:10,489 --> 00:26:10,969
+Age.
+
+737
+00:26:13,650 --> 00:26:14,130
+OK,
+
+738
+00:26:14,310 --> 00:26:15,380
+we have a phone number.
+
+739
+00:26:15,550 --> 00:26:15,630
+Well,
+
+740
+00:26:15,790 --> 00:26:17,040
+phone number is a number,
+
+741
+00:26:17,109 --> 00:26:18,949
+so maybe I'll just put that as an integer.
+
+742
+00:26:20,849 --> 00:26:21,400
+Get into
+
+743
+00:26:24,560 --> 00:26:24,589
+Phone
+
+744
+00:26:26,109 --> 00:26:26,839
+number.
+
+745
+00:26:29,589 --> 00:26:32,349
+And then we'll have location
+
+746
+00:26:32,520 --> 00:26:33,489
+as a string.
+
+747
+00:26:35,719 --> 00:26:37,000
+Let's get string.
+
+748
+00:26:38,239 --> 00:26:39,780
+Ask for a location.
+
+749
+00:26:42,890 --> 00:26:43,329
+OK.
+
+750
+00:26:44,569 --> 00:26:47,319
+So I have all of these.
+
+751
+00:26:48,260 --> 00:26:49,270
+Building blocks to
+
+752
+00:26:49,619 --> 00:26:51,500
+get these inputs from the user.
+
+753
+00:26:52,380 --> 00:26:54,900
+So let's try that out for now and see what happens.
+
+754
+00:26:56,109 --> 00:26:58,180
+Make contacts.slash contacts.
+
+755
+00:27:00,119 --> 00:27:01,339
+So I asked for name,
+
+756
+00:27:01,650 --> 00:27:02,359
+Kelly,
+
+757
+00:27:03,000 --> 00:27:03,520
+31.
+
+758
+00:27:04,260 --> 00:27:04,849
+Um,
+
+759
+00:27:04,939 --> 00:27:06,900
+my phone number 111.
+
+760
+00:27:10,079 --> 00:27:10,510
+OK,
+
+761
+00:27:10,670 --> 00:27:11,219
+let's see,
+
+762
+00:27:11,430 --> 00:27:12,979
+so it's prompting me again,
+
+763
+00:27:13,310 --> 00:27:14,219
+which makes me think
+
+764
+00:27:14,910 --> 00:27:16,150
+something's going wrong here.
+
+765
+00:27:16,310 --> 00:27:19,300
+Why am I not able to put in my phone number?
+
+766
+00:27:19,670 --> 00:27:19,750
+Well,
+
+767
+00:27:19,869 --> 00:27:20,160
+first of all,
+
+768
+00:27:20,189 --> 00:27:22,339
+I forgot an extra number on the end here,
+
+769
+00:27:22,589 --> 00:27:23,140
+but
+
+770
+00:27:23,989 --> 00:27:25,900
+really we should be seeing here that this is
+
+771
+00:27:26,550 --> 00:27:27,510
+including some
+
+772
+00:27:27,829 --> 00:27:30,280
+like I have hyphens some brackets
+
+773
+00:27:30,829 --> 00:27:31,199
+which
+
+774
+00:27:31,430 --> 00:27:32,619
+do not really
+
+775
+00:27:32,810 --> 00:27:35,670
+um aren't really compatible with an integer type.
+
+776
+00:27:36,520 --> 00:27:37,060
+So,
+
+777
+00:27:37,260 --> 00:27:40,699
+what I might want to do here is actually change this to be a string.
+
+778
+00:27:42,050 --> 00:27:43,060
+She just to get string.
+
+779
+00:27:43,949 --> 00:27:44,709
+Let's try this again.
+
+780
+00:27:46,180 --> 00:27:47,560
+And make contacts
+
+781
+00:27:48,170 --> 00:27:51,050
+and then run contacts and ask me my name.
+
+782
+00:27:51,699 --> 00:27:51,709
+A
+
+783
+00:27:54,119 --> 00:27:54,750
+Phone number,
+
+784
+00:27:55,000 --> 00:27:55,560
+let's see.
+
+785
+00:27:58,439 --> 00:27:58,880
+OK,
+
+786
+00:27:59,109 --> 00:27:59,660
+great.
+
+787
+00:28:00,170 --> 00:28:00,609
+Location,
+
+788
+00:28:00,829 --> 00:28:01,810
+Cambridge.
+
+789
+00:28:02,810 --> 00:28:03,310
+OK,
+
+790
+00:28:03,630 --> 00:28:08,229
+so it takes in those inputs um without any errors as we can see,
+
+791
+00:28:08,589 --> 00:28:13,390
+and now we want to be able to output that and print it back to the user.
+
+792
+00:28:14,300 --> 00:28:15,079
+So
+
+793
+00:28:15,439 --> 00:28:16,369
+I know you want to print.
+
+794
+00:28:17,709 --> 00:28:18,560
+And
+
+795
+00:28:18,910 --> 00:28:19,359
+we might
+
+796
+00:28:19,599 --> 00:28:21,589
+what we might want to say here,
+
+797
+00:28:22,239 --> 00:28:24,229
+say new contact name,
+
+798
+00:28:24,719 --> 00:28:25,310
+age,
+
+799
+00:28:25,319 --> 00:28:26,069
+lives in,
+
+800
+00:28:26,640 --> 00:28:28,160
+location can be reached at.
+
+801
+00:28:28,989 --> 00:28:29,760
+Phone number,
+
+802
+00:28:30,030 --> 00:28:31,599
+so you contact.
+
+803
+00:28:32,900 --> 00:28:33,760
+And so
+
+804
+00:28:33,930 --> 00:28:35,920
+my name here is going to be a string,
+
+805
+00:28:36,010 --> 00:28:37,520
+so I'm going to put a placeholder there.
+
+806
+00:28:39,020 --> 00:28:40,349
+And then my age.
+
+807
+00:28:41,689 --> 00:28:43,219
+And which is an integer.
+
+808
+00:28:43,510 --> 00:28:45,520
+So this should be a string placeholder
+
+809
+00:28:45,949 --> 00:28:46,510
+integer.
+
+810
+00:28:48,349 --> 00:28:49,130
+Lives in
+
+811
+00:28:50,609 --> 00:28:51,619
+Location,
+
+812
+00:28:51,969 --> 00:28:53,140
+which is a string.
+
+813
+00:28:55,099 --> 00:28:57,270
+And can be reached at.
+
+814
+00:28:59,760 --> 00:29:00,400
+My phone number,
+
+815
+00:29:00,479 --> 00:29:03,229
+which I've now changed to be a string
+
+816
+00:29:03,400 --> 00:29:03,920
+as well.
+
+817
+00:29:05,260 --> 00:29:05,650
+OK.
+
+818
+00:29:06,939 --> 00:29:08,050
+So we have the
+
+819
+00:29:08,170 --> 00:29:09,890
+string portion of this.
+
+820
+00:29:10,180 --> 00:29:12,689
+Now we want to give it those values
+
+821
+00:29:13,060 --> 00:29:14,689
+to substitute in.
+
+822
+00:29:15,060 --> 00:29:15,170
+So,
+
+823
+00:29:15,180 --> 00:29:17,459
+the first one here is going to correspond with name.
+
+824
+00:29:18,199 --> 00:29:19,910
+And the order that I put these in
+
+825
+00:29:20,150 --> 00:29:22,459
+will correspond with the order that they're
+
+826
+00:29:22,670 --> 00:29:23,550
+substituted in,
+
+827
+00:29:23,630 --> 00:29:24,579
+so I'll have name,
+
+828
+00:29:24,790 --> 00:29:25,469
+age.
+
+829
+00:29:26,319 --> 00:29:27,250
+Location
+
+830
+00:29:27,500 --> 00:29:27,979
+and then
+
+831
+00:29:28,219 --> 00:29:28,660
+phone.
+
+832
+00:29:30,079 --> 00:29:30,750
+All right.
+
+833
+00:29:31,569 --> 00:29:32,619
+I'm also gonna add a
+
+834
+00:29:32,829 --> 00:29:34,060
+new line here,
+
+835
+00:29:34,709 --> 00:29:36,199
+so it goes on to a new line
+
+836
+00:29:36,589 --> 00:29:38,130
+and let's try this again.
+
+837
+00:29:38,229 --> 00:29:38,939
+So make
+
+838
+00:29:39,469 --> 00:29:41,939
+contacts.slash contacts
+
+839
+00:29:42,599 --> 00:29:43,270
+name Kelly,
+
+840
+00:29:43,430 --> 00:29:44,109
+H.
+
+841
+00:29:45,310 --> 00:29:46,050
+Um
+
+842
+00:29:49,560 --> 00:29:50,380
+Location.
+
+843
+00:29:52,189 --> 00:29:52,430
+All right,
+
+844
+00:29:52,560 --> 00:29:53,790
+and then we have new contact.
+
+845
+00:29:53,800 --> 00:29:54,069
+Kelly,
+
+846
+00:29:54,109 --> 00:29:57,000
+21 lives in Cambridge and can be reached at
+
+847
+00:29:57,229 --> 00:30:00,550
+1111111111.
+
+848
+00:30:00,579 --> 00:30:00,829
+Great.
+
+849
+00:30:03,280 --> 00:30:04,010
+So,
+
+850
+00:30:04,300 --> 00:30:05,650
+now that we've gotten some
+
+851
+00:30:06,229 --> 00:30:07,369
+practice with
+
+852
+00:30:07,619 --> 00:30:09,530
+printing variables,
+
+853
+00:30:09,819 --> 00:30:10,609
+um,
+
+854
+00:30:10,900 --> 00:30:12,050
+and getting input,
+
+855
+00:30:12,180 --> 00:30:16,829
+let's move on to some more things that we can implement in our code.
+
+856
+00:30:19,040 --> 00:30:20,130
+So we're gonna talk a bit about
+
+857
+00:30:20,339 --> 00:30:22,849
+loops and conditionals
+
+858
+00:30:23,180 --> 00:30:23,780
+now.
+
+859
+00:30:25,170 --> 00:30:26,560
+So conditionals.
+
+860
+00:30:26,810 --> 00:30:27,599
+This is,
+
+861
+00:30:28,290 --> 00:30:30,280
+we want some code to run,
+
+862
+00:30:30,329 --> 00:30:32,449
+but only under a certain condition.
+
+863
+00:30:33,310 --> 00:30:34,099
+In this case,
+
+864
+00:30:34,589 --> 00:30:38,660
+going back to our like wallet or personal finance app example,
+
+865
+00:30:38,989 --> 00:30:39,699
+let's say
+
+866
+00:30:39,949 --> 00:30:40,989
+I want to print out the balance,
+
+867
+00:30:41,030 --> 00:30:42,500
+but I only want to do so if
+
+868
+00:30:42,790 --> 00:30:45,579
+the person's balance is actually a positive number.
+
+869
+00:30:46,689 --> 00:30:47,650
+So I have this
+
+870
+00:30:47,819 --> 00:30:48,609
+statement here.
+
+871
+00:30:48,900 --> 00:30:50,579
+If balance is less than 0,
+
+872
+00:30:50,819 --> 00:30:51,510
+print
+
+873
+00:30:51,900 --> 00:30:53,500
+insufficient funds.
+
+874
+00:30:53,699 --> 00:30:56,130
+Let's break down what each piece of this
+
+875
+00:30:56,540 --> 00:30:57,170
+does.
+
+876
+00:30:58,319 --> 00:31:02,750
+So this section here is what we call buoyan expression.
+
+877
+00:31:03,040 --> 00:31:04,069
+That means that
+
+878
+00:31:04,280 --> 00:31:07,150
+whatever goes inside of those parentheses,
+
+879
+00:31:07,319 --> 00:31:10,630
+it's gonna evaluate to be either true or false.
+
+880
+00:31:10,959 --> 00:31:11,790
+In this case,
+
+881
+00:31:12,160 --> 00:31:12,500
+um,
+
+882
+00:31:12,560 --> 00:31:14,650
+whether balance is less than zero,
+
+883
+00:31:14,839 --> 00:31:17,800
+we'll evaluate to be either true or false.
+
+884
+00:31:20,140 --> 00:31:20,689
+This is
+
+885
+00:31:20,900 --> 00:31:23,290
+what the portion of it we call the conditional,
+
+886
+00:31:23,420 --> 00:31:23,979
+the if.
+
+887
+00:31:24,890 --> 00:31:27,079
+And then this statement is going to run
+
+888
+00:31:27,300 --> 00:31:27,750
+if
+
+889
+00:31:28,300 --> 00:31:30,810
+this bullying expression evaluates to true.
+
+890
+00:31:33,390 --> 00:31:37,020
+We can extend this a bit further and then provide another case.
+
+891
+00:31:37,550 --> 00:31:38,140
+So
+
+892
+00:31:38,390 --> 00:31:42,079
+we have this first case if balance is less than 0,
+
+893
+00:31:42,209 --> 00:31:44,180
+we'll print insufficient funds.
+
+894
+00:31:44,589 --> 00:31:45,119
+If
+
+895
+00:31:45,430 --> 00:31:47,359
+the balance is not less than 0,
+
+896
+00:31:47,550 --> 00:31:48,810
+which is our E case,
+
+897
+00:31:49,150 --> 00:31:50,000
+then we can print
+
+898
+00:31:50,310 --> 00:31:53,339
+like available balance and then later maybe we'll print out
+
+899
+00:31:53,699 --> 00:31:54,099
+um
+
+900
+00:31:54,270 --> 00:31:55,239
+the balance.
+
+901
+00:31:56,089 --> 00:31:57,939
+So something to note here is that
+
+902
+00:31:58,229 --> 00:32:01,510
+these two cases are mutually exclusive,
+
+903
+00:32:01,829 --> 00:32:01,959
+right?
+
+904
+00:32:02,050 --> 00:32:04,380
+Like you're not gonna have a balance that's both
+
+905
+00:32:04,680 --> 00:32:05,380
+negative
+
+906
+00:32:05,709 --> 00:32:06,219
+and
+
+907
+00:32:06,430 --> 00:32:07,400
+not negative.
+
+908
+00:32:07,550 --> 00:32:08,369
+And so,
+
+909
+00:32:08,790 --> 00:32:10,270
+these two cases
+
+910
+00:32:10,709 --> 00:32:12,829
+are never going to be happening at the same time.
+
+911
+00:32:15,510 --> 00:32:16,880
+We also have 4 loops.
+
+912
+00:32:16,989 --> 00:32:18,660
+This is if you want to
+
+913
+00:32:18,949 --> 00:32:20,140
+do some sort of
+
+914
+00:32:20,310 --> 00:32:21,000
+action,
+
+915
+00:32:21,109 --> 00:32:21,939
+do something,
+
+916
+00:32:22,229 --> 00:32:22,459
+uh,
+
+917
+00:32:22,469 --> 00:32:23,939
+a repeated number of times,
+
+918
+00:32:24,229 --> 00:32:27,390
+and 4 loops especially are helpful if you know exactly
+
+919
+00:32:27,390 --> 00:32:29,670
+how many times you're gonna be doing that thing.
+
+920
+00:32:30,420 --> 00:32:32,650
+So in this little example here,
+
+921
+00:32:32,859 --> 00:32:33,569
+we have
+
+922
+00:32:33,859 --> 00:32:35,300
+a 4 loop that
+
+923
+00:32:35,540 --> 00:32:36,209
+prints out,
+
+924
+00:32:36,459 --> 00:32:38,089
+I can count to
+
+925
+00:32:38,400 --> 00:32:38,829
+1,
+
+926
+00:32:38,939 --> 00:32:40,030
+I can count to 2.
+
+927
+00:32:40,099 --> 00:32:41,310
+I can count to 3,
+
+928
+00:32:41,540 --> 00:32:42,329
+all the way,
+
+929
+00:32:42,680 --> 00:32:43,030
+uh,
+
+930
+00:32:43,060 --> 00:32:45,540
+so on until I can count to 30.
+
+931
+00:32:46,550 --> 00:32:48,810
+So let's break down each part of this syntax,
+
+932
+00:32:49,030 --> 00:32:50,339
+as it can be a little bit
+
+933
+00:32:50,660 --> 00:32:52,310
+um overwhelming at first.
+
+934
+00:32:53,650 --> 00:32:55,420
+So this first portion is
+
+935
+00:32:55,750 --> 00:32:57,339
+what we call initialization.
+
+936
+00:32:57,510 --> 00:32:58,300
+So this is
+
+937
+00:32:58,709 --> 00:33:01,060
+um I is sort of our
+
+938
+00:33:01,430 --> 00:33:04,989
+variable that's keeping track of which iteration we're on.
+
+939
+00:33:05,310 --> 00:33:07,319
+And so I first need to actually
+
+940
+00:33:07,630 --> 00:33:09,310
+declare that variable.
+
+941
+00:33:09,589 --> 00:33:14,150
+So I'm giving it in I equals value of zero.
+
+942
+00:33:15,739 --> 00:33:16,530
+Then we have
+
+943
+00:33:17,300 --> 00:33:20,569
+Another Boolean expression like we saw in the conditionals
+
+944
+00:33:20,890 --> 00:33:22,660
+and this is specifying
+
+945
+00:33:23,050 --> 00:33:25,479
+when am I going to repeat until
+
+946
+00:33:25,689 --> 00:33:28,089
+so as long as this expression is true
+
+947
+00:33:28,410 --> 00:33:29,439
+I should run
+
+948
+00:33:29,770 --> 00:33:30,380
+the
+
+949
+00:33:30,849 --> 00:33:32,520
+code that's within this for loop.
+
+950
+00:33:33,170 --> 00:33:36,560
+So as long as I is less than or equal to 30,
+
+951
+00:33:36,930 --> 00:33:39,060
+then this print F will print.
+
+952
+00:33:41,239 --> 00:33:42,140
+Then we also have
+
+953
+00:33:42,400 --> 00:33:43,750
+the incrementing step.
+
+954
+00:33:44,199 --> 00:33:47,869
+So this means that every time I run print F,
+
+955
+00:33:48,040 --> 00:33:51,189
+every time I run the code that's within these curly braces,
+
+956
+00:33:51,959 --> 00:33:55,920
+the I variable is going to increment by 1.
+
+957
+00:33:59,290 --> 00:34:02,239
+We can do a similar thing with Ya loops,
+
+958
+00:34:02,339 --> 00:34:04,489
+but the use case is a little bit different.
+
+959
+00:34:04,569 --> 00:34:06,000
+So with Y loops,
+
+960
+00:34:06,329 --> 00:34:08,520
+we don't necessarily know,
+
+961
+00:34:08,870 --> 00:34:09,168
+um,
+
+962
+00:34:09,208 --> 00:34:11,199
+this is good for situations where you don't necessarily
+
+963
+00:34:11,199 --> 00:34:13,600
+know how many times you're gonna loop for,
+
+964
+00:34:13,889 --> 00:34:16,679
+but you know when you should loop until.
+
+965
+00:34:17,290 --> 00:34:18,208
+So what does that mean?
+
+966
+00:34:18,969 --> 00:34:20,208
+Similar to 4 loops.
+
+967
+00:34:20,958 --> 00:34:21,629
+We have
+
+968
+00:34:21,800 --> 00:34:24,060
+the first initialization part,
+
+969
+00:34:24,360 --> 00:34:24,520
+you know,
+
+970
+00:34:24,600 --> 00:34:27,310
+we've set some sort of counter variable or
+
+971
+00:34:27,600 --> 00:34:28,080
+in this case,
+
+972
+00:34:28,120 --> 00:34:29,510
+we just have I,
+
+973
+00:34:29,840 --> 00:34:31,800
+and we've given it a value of one.
+
+974
+00:34:33,989 --> 00:34:35,860
+Then within the Y loop we have
+
+975
+00:34:36,188 --> 00:34:38,260
+another Boolean expression
+
+976
+00:34:38,590 --> 00:34:42,340
+and so as long as this expression evaluates to true,
+
+977
+00:34:42,708 --> 00:34:45,699
+then the code within those curly braces will run
+
+978
+00:34:46,188 --> 00:34:50,300
+and so while I is less than or equal to 30,
+
+979
+00:34:50,790 --> 00:34:51,379
+this
+
+980
+00:34:51,909 --> 00:34:52,500
+thing
+
+981
+00:34:52,870 --> 00:34:55,350
+will loop over and over.
+
+982
+00:34:57,580 --> 00:35:01,550
+And then we also have the increment step like we saw in the 4 loop,
+
+983
+00:35:01,959 --> 00:35:02,489
+um,
+
+984
+00:35:02,560 --> 00:35:03,590
+but in the Y loop,
+
+985
+00:35:03,639 --> 00:35:06,469
+this is gonna be something that you also have to do
+
+986
+00:35:06,760 --> 00:35:08,110
+within your Y loop.
+
+987
+00:35:08,399 --> 00:35:11,909
+You can imagine that if I wrote this Y loop the same way,
+
+988
+00:35:12,159 --> 00:35:15,090
+but I forgot to add that I plus plus step,
+
+989
+00:35:15,520 --> 00:35:17,070
+it might just run on forever,
+
+990
+00:35:17,159 --> 00:35:17,330
+right?
+
+991
+00:35:17,520 --> 00:35:19,689
+Because I is not going to change its value
+
+992
+00:35:19,919 --> 00:35:21,310
+and therefore I,
+
+993
+00:35:21,840 --> 00:35:25,439
+if it's always 1 will always be lesser equal to 30.
+
+994
+00:35:25,889 --> 00:35:27,850
+So that's something to know if
+
+995
+00:35:28,100 --> 00:35:29,530
+um you see yourself
+
+996
+00:35:30,260 --> 00:35:32,580
+maybe accidentally making an infinite loop.
+
+997
+00:35:35,070 --> 00:35:35,350
+OK,
+
+998
+00:35:35,469 --> 00:35:37,379
+a 3rd type of loop we have
+
+999
+00:35:37,669 --> 00:35:39,750
+is what we call the do while loop.
+
+1000
+00:35:40,550 --> 00:35:42,149
+So this do while loop,
+
+1001
+00:35:42,639 --> 00:35:45,310
+it looks a little bit similar to the Y loop,
+
+1002
+00:35:45,560 --> 00:35:47,000
+but we have this do
+
+1003
+00:35:47,879 --> 00:35:50,070
+and notation beforehand.
+
+1004
+00:35:50,080 --> 00:35:53,550
+And so the main difference here is that with the Y loop,
+
+1005
+00:35:54,120 --> 00:35:55,070
+we start out
+
+1006
+00:35:55,360 --> 00:35:55,870
+by
+
+1007
+00:35:56,080 --> 00:35:58,709
+evaluating this boolean expression.
+
+1008
+00:35:59,320 --> 00:35:59,750
+So
+
+1009
+00:36:00,239 --> 00:36:04,629
+we first check before we even run print F and I + plus,
+
+1010
+00:36:05,040 --> 00:36:07,070
+is I less than or equal to 30.
+
+1011
+00:36:08,570 --> 00:36:09,899
+In a do while loop,
+
+1012
+00:36:10,110 --> 00:36:11,979
+we don't do that initial check.
+
+1013
+00:36:12,149 --> 00:36:16,500
+We first will start out by doing what's in this do block.
+
+1014
+00:36:16,790 --> 00:36:17,219
+So
+
+1015
+00:36:17,750 --> 00:36:21,489
+I have an N and then I will send N to
+
+1016
+00:36:21,870 --> 00:36:23,270
+the value of get in.
+
+1017
+00:36:24,270 --> 00:36:26,189
+And then I'm gonna check
+
+1018
+00:36:26,600 --> 00:36:27,389
+while
+
+1019
+00:36:27,840 --> 00:36:28,790
+this condition
+
+1020
+00:36:29,040 --> 00:36:30,909
+and is less than or equal to 0.
+
+1021
+00:36:31,760 --> 00:36:32,719
+While that's true,
+
+1022
+00:36:33,080 --> 00:36:34,800
+I should go back and do that again.
+
+1023
+00:36:35,639 --> 00:36:36,370
+And so
+
+1024
+00:36:36,540 --> 00:36:39,489
+you can think of Dubai loops as um
+
+1025
+00:36:39,699 --> 00:36:41,100
+having this extra.
+
+1026
+00:36:42,110 --> 00:36:42,469
+Uh,
+
+1027
+00:36:42,629 --> 00:36:44,469
+piece of code that will run no matter what.
+
+1028
+00:36:44,629 --> 00:36:46,340
+You don't do that initial check
+
+1029
+00:36:46,750 --> 00:36:48,189
+compared to Yoops.
+
+1030
+00:36:51,229 --> 00:36:51,810
+OK,
+
+1031
+00:36:52,090 --> 00:36:52,739
+so
+
+1032
+00:36:53,010 --> 00:36:54,169
+now we're gonna move on
+
+1033
+00:36:54,489 --> 00:36:55,629
+to Mario,
+
+1034
+00:36:55,770 --> 00:36:57,330
+taking a look at what
+
+1035
+00:36:57,689 --> 00:36:58,300
+we can
+
+1036
+00:36:58,729 --> 00:37:00,280
+try to piece together
+
+1037
+00:37:00,489 --> 00:37:02,120
+from what we've just talked about
+
+1038
+00:37:02,530 --> 00:37:05,090
+and get started with this week's problem set.
+
+1039
+00:37:06,770 --> 00:37:09,250
+So if you're familiar with Mario,
+
+1040
+00:37:09,399 --> 00:37:11,250
+this is a video game,
+
+1041
+00:37:11,620 --> 00:37:13,489
+and this is one of the,
+
+1042
+00:37:13,780 --> 00:37:14,449
+um,
+
+1043
+00:37:14,649 --> 00:37:15,659
+first few games,
+
+1044
+00:37:15,699 --> 00:37:16,330
+I think,
+
+1045
+00:37:16,709 --> 00:37:17,290
+uh,
+
+1046
+00:37:17,580 --> 00:37:18,040
+in the game,
+
+1047
+00:37:18,060 --> 00:37:21,010
+we have one of these block pyramids,
+
+1048
+00:37:21,219 --> 00:37:22,610
+and we're gonna try to replicate
+
+1049
+00:37:22,899 --> 00:37:26,159
+something like that in this week's problem set.
+
+1050
+00:37:26,629 --> 00:37:27,169
+So
+
+1051
+00:37:28,060 --> 00:37:30,729
+we have this like pyramid of hashes
+
+1052
+00:37:31,139 --> 00:37:34,409
+where each level has one less hash than the next.
+
+1053
+00:37:37,159 --> 00:37:37,469
+Alright,
+
+1054
+00:37:37,679 --> 00:37:41,020
+so we can try by first creating
+
+1055
+00:37:41,360 --> 00:37:42,929
+a left aligned pyramid.
+
+1056
+00:37:43,439 --> 00:37:44,709
+So this might be a little bit
+
+1057
+00:37:45,120 --> 00:37:48,350
+uh easier than what's asked of you in the problem set,
+
+1058
+00:37:48,510 --> 00:37:51,030
+and this will hopefully get you more comfortable with
+
+1059
+00:37:51,429 --> 00:37:52,350
+starting out.
+
+1060
+00:37:54,600 --> 00:37:55,010
+OK.
+
+1061
+00:37:56,060 --> 00:37:58,020
+So let's move to.
+
+1062
+00:38:00,449 --> 00:38:00,479
+CSR.
+
+1063
+00:38:00,899 --> 00:38:02,370
+I'm gonna clear my terminal.
+
+1064
+00:38:03,399 --> 00:38:04,909
+And we're gonna code
+
+1065
+00:38:05,449 --> 00:38:06,860
+Mario.c.
+
+1066
+00:38:08,320 --> 00:38:08,929
+OK.
+
+1067
+00:38:09,620 --> 00:38:10,870
+So first things first,
+
+1068
+00:38:11,219 --> 00:38:14,209
+we should include those libraries that we need.
+
+1069
+00:38:14,340 --> 00:38:15,929
+So I know I'm gonna be using
+
+1070
+00:38:16,340 --> 00:38:16,850
+um
+
+1071
+00:38:17,139 --> 00:38:17,699
+get
+
+1072
+00:38:18,000 --> 00:38:18,389
+in,
+
+1073
+00:38:18,659 --> 00:38:20,300
+so I should include CS50.
+
+1074
+00:38:20,500 --> 00:38:20,899
+H.
+
+1075
+00:38:21,790 --> 00:38:23,620
+I also know I'm gonna be printing,
+
+1076
+00:38:23,949 --> 00:38:25,830
+so I should include standard.O.H.
+
+1077
+00:38:28,139 --> 00:38:30,149
+And then I have my main function.
+
+1078
+00:38:31,830 --> 00:38:31,850
+All right.
+
+1079
+00:38:33,870 --> 00:38:34,409
+So,
+
+1080
+00:38:34,530 --> 00:38:39,290
+a good tactic to think about when you're like starting out with writing
+
+1081
+00:38:39,530 --> 00:38:40,360
+a program.
+
+1082
+00:38:41,389 --> 00:38:44,669
+Could be to like outline what are the like step by
+
+1083
+00:38:44,669 --> 00:38:47,050
+step things that are going to happen in this program.
+
+1084
+00:38:47,370 --> 00:38:49,379
+When you're first looking at this empty code space,
+
+1085
+00:38:49,409 --> 00:38:50,800
+it can be a little bit daunting,
+
+1086
+00:38:50,840 --> 00:38:51,000
+like,
+
+1087
+00:38:51,010 --> 00:38:52,479
+what am I supposed to do first?
+
+1088
+00:38:52,830 --> 00:38:53,239
+Um,
+
+1089
+00:38:53,409 --> 00:38:56,600
+so sometimes writing that out step by step is helpful.
+
+1090
+00:38:57,169 --> 00:38:59,310
+So I know that first I'm gonna be
+
+1091
+00:38:59,610 --> 00:39:00,000
+like
+
+1092
+00:39:00,459 --> 00:39:01,530
+prompting the user.
+
+1093
+00:39:03,560 --> 00:39:04,699
+For a height.
+
+1094
+00:39:06,270 --> 00:39:08,090
+And that's gonna be like an integer.
+
+1095
+00:39:10,090 --> 00:39:11,600
+Once I get that height,
+
+1096
+00:39:11,889 --> 00:39:14,479
+I know that I want to print out
+
+1097
+00:39:14,929 --> 00:39:15,770
+the pyramid.
+
+1098
+00:39:17,830 --> 00:39:18,679
+Of that height.
+
+1099
+00:39:19,669 --> 00:39:19,679
+OK.
+
+1100
+00:39:21,300 --> 00:39:22,570
+So that's kind of how we're
+
+1101
+00:39:22,860 --> 00:39:23,340
+breaking it down.
+
+1102
+00:39:23,419 --> 00:39:24,419
+We have two big steps.
+
+1103
+00:39:24,580 --> 00:39:24,699
+First,
+
+1104
+00:39:24,780 --> 00:39:26,129
+we're going to prompt the user for the height,
+
+1105
+00:39:26,459 --> 00:39:28,090
+then using that height,
+
+1106
+00:39:28,179 --> 00:39:29,820
+we're going to print a pyramid.
+
+1107
+00:39:31,449 --> 00:39:33,530
+So let's tackle this first part first.
+
+1108
+00:39:34,620 --> 00:39:37,820
+So if we recall from getting inputs before,
+
+1109
+00:39:38,419 --> 00:39:40,610
+I'm gonna create a variable called height.
+
+1110
+00:39:40,659 --> 00:39:41,699
+It's gonna be an integer.
+
+1111
+00:39:42,449 --> 00:39:44,899
+I'm gonna use the get into function.
+
+1112
+00:39:46,510 --> 00:39:48,050
+To get that from the user,
+
+1113
+00:39:48,149 --> 00:39:49,350
+so I'm gonna say height.
+
+1114
+00:39:51,679 --> 00:39:54,620
+And then this will ask the user for the height.
+
+1115
+00:39:57,209 --> 00:40:00,229
+Next we have printing printing the pyramid.
+
+1116
+00:40:00,330 --> 00:40:02,090
+So this is a little bit more
+
+1117
+00:40:02,810 --> 00:40:03,479
+complex
+
+1118
+00:40:03,800 --> 00:40:04,469
+of a
+
+1119
+00:40:04,770 --> 00:40:05,780
+of a task.
+
+1120
+00:40:06,129 --> 00:40:08,919
+So another way we can tackle this is just like
+
+1121
+00:40:09,280 --> 00:40:09,969
+try some things,
+
+1122
+00:40:10,120 --> 00:40:11,320
+iterate on that
+
+1123
+00:40:11,610 --> 00:40:13,239
+and improve as we go.
+
+1124
+00:40:13,889 --> 00:40:15,449
+So I know that I want to print.
+
+1125
+00:40:16,629 --> 00:40:17,350
+Something
+
+1126
+00:40:17,949 --> 00:40:19,100
+over and over again.
+
+1127
+00:40:19,270 --> 00:40:22,030
+So this might be a good chance to use a for loop.
+
+1128
+00:40:23,469 --> 00:40:26,510
+So the height of my pyramid is gonna be
+
+1129
+00:40:26,840 --> 00:40:27,760
+the variable height.
+
+1130
+00:40:28,780 --> 00:40:30,989
+So I can set up my initialize,
+
+1131
+00:40:31,080 --> 00:40:33,550
+I can initialize I to
+
+1132
+00:40:33,760 --> 00:40:34,350
+0,
+
+1133
+00:40:34,479 --> 00:40:35,000
+let's say.
+
+1134
+00:40:35,699 --> 00:40:39,310
+And repeat as long as I is less than height.
+
+1135
+00:40:40,719 --> 00:40:42,280
+Each time I'm gonna increment I.
+
+1136
+00:40:44,030 --> 00:40:46,070
+And so hopefully this should
+
+1137
+00:40:46,600 --> 00:40:47,590
+print out
+
+1138
+00:40:47,959 --> 00:40:48,909
+um
+
+1139
+00:40:49,360 --> 00:40:51,800
+something a high number of times.
+
+1140
+00:40:53,219 --> 00:40:56,469
+So let's just do one hash block for now and see
+
+1141
+00:40:57,159 --> 00:40:58,689
+what this does.
+
+1142
+00:40:59,860 --> 00:41:01,350
+So I'm gonna make Mario.
+
+1143
+00:41:02,929 --> 00:41:03,510
+Mario
+
+1144
+00:41:04,479 --> 00:41:04,639
+Right,
+
+1145
+00:41:04,679 --> 00:41:06,129
+let's say 5.
+
+1146
+00:41:06,719 --> 00:41:06,959
+OK,
+
+1147
+00:41:07,080 --> 00:41:07,790
+so we have
+
+1148
+00:41:08,120 --> 00:41:09,770
+5 hash blocks here.
+
+1149
+00:41:11,000 --> 00:41:13,330
+That we're getting somewhere that that is like
+
+1150
+00:41:13,620 --> 00:41:14,389
+the height,
+
+1151
+00:41:14,739 --> 00:41:17,139
+but I know that these should be on.
+
+1152
+00:41:17,860 --> 00:41:18,620
+Different levels,
+
+1153
+00:41:18,739 --> 00:41:19,060
+right?
+
+1154
+00:41:20,100 --> 00:41:21,770
+So each time I print
+
+1155
+00:41:22,100 --> 00:41:23,370
+this row.
+
+1156
+00:41:25,090 --> 00:41:26,689
+So let's say this is like my.
+
+1157
+00:41:27,610 --> 00:41:27,709
+ow
+
+1158
+00:41:28,850 --> 00:41:30,280
+I should also be printing out.
+
+1159
+00:41:31,209 --> 00:41:31,739
+A
+
+1160
+00:41:31,949 --> 00:41:32,699
+new line.
+
+1161
+00:41:42,570 --> 00:41:42,580
+OK,
+
+1162
+00:41:43,120 --> 00:41:44,199
+so if I make Mario again,
+
+1163
+00:41:44,239 --> 00:41:44,870
+oops.
+
+1164
+00:41:46,169 --> 00:41:47,360
+I forgot an F there,
+
+1165
+00:41:47,510 --> 00:41:48,439
+so make Mario.
+
+1166
+00:41:50,570 --> 00:41:51,120
+Mario
+
+1167
+00:41:51,719 --> 00:41:52,219
+5,
+
+1168
+00:41:52,389 --> 00:41:52,770
+OK.
+
+1169
+00:41:53,689 --> 00:41:54,780
+So we're getting somewhere,
+
+1170
+00:41:54,969 --> 00:41:55,399
+right?
+
+1171
+00:41:55,969 --> 00:41:57,439
+We have our 5 rows,
+
+1172
+00:41:57,770 --> 00:41:59,080
+but within the row,
+
+1173
+00:41:59,810 --> 00:42:01,350
+we don't want just one hash block,
+
+1174
+00:42:01,409 --> 00:42:02,219
+we want
+
+1175
+00:42:02,889 --> 00:42:05,929
+some number based on what the height is.
+
+1176
+00:42:06,790 --> 00:42:07,530
+And so
+
+1177
+00:42:07,659 --> 00:42:09,850
+when I have this like mini problem
+
+1178
+00:42:10,020 --> 00:42:11,419
+within this larger problem,
+
+1179
+00:42:11,639 --> 00:42:11,780
+right,
+
+1180
+00:42:11,820 --> 00:42:12,290
+like
+
+1181
+00:42:12,780 --> 00:42:15,010
+somewhere in here I should be like
+
+1182
+00:42:15,540 --> 00:42:16,459
+printing.
+
+1183
+00:42:17,469 --> 00:42:18,239
+The row
+
+1184
+00:42:18,500 --> 00:42:19,199
+based on.
+
+1185
+00:42:20,570 --> 00:42:21,429
+Like the height.
+
+1186
+00:42:23,030 --> 00:42:23,780
+Or based on,
+
+1187
+00:42:23,830 --> 00:42:25,939
+I guess specifically which row I'm on.
+
+1188
+00:42:29,879 --> 00:42:30,610
+I can
+
+1189
+00:42:31,350 --> 00:42:34,780
+sort of what we call abstract away this into
+
+1190
+00:42:35,419 --> 00:42:36,889
+another function
+
+1191
+00:42:37,260 --> 00:42:39,729
+that solves that mini problem for us.
+
+1192
+00:42:40,540 --> 00:42:41,969
+So I'm gonna say.
+
+1193
+00:42:43,429 --> 00:42:46,860
+Let's create a new function called print row.
+
+1194
+00:42:47,610 --> 00:42:49,530
+And all this is going to do for us.
+
+1195
+00:42:50,540 --> 00:42:51,330
+Is
+
+1196
+00:42:51,939 --> 00:42:52,610
+given.
+
+1197
+00:42:53,560 --> 00:42:54,610
+How many
+
+1198
+00:42:55,090 --> 00:42:56,600
+hash blocks we want to print.
+
+1199
+00:42:57,679 --> 00:42:59,310
+We'll print out that many.
+
+1200
+00:42:59,399 --> 00:43:00,870
+So given a number
+
+1201
+00:43:01,560 --> 00:43:02,479
+of bricks,
+
+1202
+00:43:02,560 --> 00:43:03,370
+print
+
+1203
+00:43:03,639 --> 00:43:04,100
+that
+
+1204
+00:43:04,239 --> 00:43:05,800
+number of bricks.
+
+1205
+00:43:08,199 --> 00:43:10,219
+So I know I want to take in some number.
+
+1206
+00:43:10,239 --> 00:43:11,719
+I'm gonna call this bricks.
+
+1207
+00:43:12,409 --> 00:43:13,350
+As an input
+
+1208
+00:43:15,469 --> 00:43:16,550
+And then
+
+1209
+00:43:17,000 --> 00:43:17,770
+print
+
+1210
+00:43:18,000 --> 00:43:18,590
+F.
+
+1211
+00:43:20,129 --> 00:43:21,120
+I want to print
+
+1212
+00:43:21,330 --> 00:43:23,379
+brick number of
+
+1213
+00:43:23,570 --> 00:43:24,209
+bricks.
+
+1214
+00:43:25,149 --> 00:43:25,870
+So
+
+1215
+00:43:26,540 --> 00:43:26,850
+Again,
+
+1216
+00:43:26,889 --> 00:43:27,969
+we can use this for loop.
+
+1217
+00:43:29,320 --> 00:43:30,790
+I equals 0,
+
+1218
+00:43:31,080 --> 00:43:33,149
+and I can use I again because
+
+1219
+00:43:33,520 --> 00:43:35,310
+it's only the scope,
+
+1220
+00:43:35,520 --> 00:43:38,870
+as we call of I is only within
+
+1221
+00:43:39,080 --> 00:43:39,810
+the 4 loop.
+
+1222
+00:43:39,959 --> 00:43:41,719
+So when I'm outside of that 4 loop,
+
+1223
+00:43:41,800 --> 00:43:43,120
+I can also use I
+
+1224
+00:43:43,399 --> 00:43:43,750
+here.
+
+1225
+00:43:44,659 --> 00:43:45,909
+I say I is less than
+
+1226
+00:43:46,429 --> 00:43:47,060
+bricks.
+
+1227
+00:43:48,919 --> 00:43:50,389
+I plus plus.
+
+1228
+00:43:53,280 --> 00:43:54,300
+And then within that,
+
+1229
+00:43:55,469 --> 00:43:56,320
+I will print.
+
+1230
+00:43:58,429 --> 00:43:58,500
+H
+
+1231
+00:43:59,500 --> 00:44:00,209
+To
+
+1232
+00:44:00,780 --> 00:44:01,510
+fun hash.
+
+1233
+00:44:03,199 --> 00:44:03,209
+OK,
+
+1234
+00:44:04,510 --> 00:44:06,260
+and then at the end of the row,
+
+1235
+00:44:06,629 --> 00:44:08,510
+so let's say I've printed like 3.
+
+1236
+00:44:09,270 --> 00:44:10,189
+Uh hashes,
+
+1237
+00:44:10,270 --> 00:44:11,239
+3 bricks.
+
+1238
+00:44:11,550 --> 00:44:13,659
+I want to also print a new line.
+
+1239
+00:44:14,459 --> 00:44:17,469
+So that the next row does indeed start on the next.
+
+1240
+00:44:18,669 --> 00:44:19,149
+I
+
+1241
+00:44:20,959 --> 00:44:21,449
+OK,
+
+1242
+00:44:21,689 --> 00:44:22,760
+so now instead of
+
+1243
+00:44:23,570 --> 00:44:24,280
+this,
+
+1244
+00:44:24,929 --> 00:44:28,159
+I can use my new function that I just created.
+
+1245
+00:44:29,159 --> 00:44:30,919
+And do print row.
+
+1246
+00:44:32,270 --> 00:44:34,139
+Maybe height number of bricks,
+
+1247
+00:44:34,669 --> 00:44:35,110
+same right?
+
+1248
+00:44:35,149 --> 00:44:37,459
+So now let's see what happens when I
+
+1249
+00:44:37,989 --> 00:44:39,350
+make Mario.
+
+1250
+00:44:40,229 --> 00:44:40,580
+OK,
+
+1251
+00:44:40,699 --> 00:44:42,649
+so we get this error called
+
+1252
+00:44:43,209 --> 00:44:45,570
+call to undeclared function.
+
+1253
+00:44:46,899 --> 00:44:48,010
+So
+
+1254
+00:44:48,419 --> 00:44:49,969
+I've created this new function,
+
+1255
+00:44:50,659 --> 00:44:51,689
+but because
+
+1256
+00:44:52,629 --> 00:44:54,080
+I'm calling it
+
+1257
+00:44:54,209 --> 00:44:56,199
+before it was actually created.
+
+1258
+00:44:56,679 --> 00:44:57,590
+We're getting this
+
+1259
+00:44:58,169 --> 00:44:58,719
+error.
+
+1260
+00:44:59,629 --> 00:45:01,080
+So there are 2 ways I could fix this.
+
+1261
+00:45:01,120 --> 00:45:03,879
+Like one way is I just move this.
+
+1262
+00:45:04,899 --> 00:45:05,649
+Up here.
+
+1263
+00:45:06,659 --> 00:45:07,949
+Now if I run it again.
+
+1264
+00:45:09,340 --> 00:45:09,800
+Ah,
+
+1265
+00:45:09,979 --> 00:45:10,419
+print off.
+
+1266
+00:45:12,419 --> 00:45:12,429
+OK.
+
+1267
+00:45:14,340 --> 00:45:15,489
+Now if I run it again.
+
+1268
+00:45:16,739 --> 00:45:17,489
+No errors.
+
+1269
+00:45:19,060 --> 00:45:22,399
+The other way that we tend to recommend.
+
+1270
+00:45:23,260 --> 00:45:24,360
+is to
+
+1271
+00:45:24,649 --> 00:45:26,459
+prototype this function.
+
+1272
+00:45:27,209 --> 00:45:27,590
+So,
+
+1273
+00:45:27,610 --> 00:45:30,159
+basically taking this first line here.
+
+1274
+00:45:31,649 --> 00:45:32,600
+Copying it up here,
+
+1275
+00:45:32,850 --> 00:45:34,040
+adding a semicolon,
+
+1276
+00:45:34,290 --> 00:45:37,540
+and what this does is it tells the compiler like,
+
+1277
+00:45:37,570 --> 00:45:37,729
+hey,
+
+1278
+00:45:37,770 --> 00:45:40,719
+I'm gonna have a function called print row
+
+1279
+00:45:40,929 --> 00:45:42,320
+and you should just trust me on that,
+
+1280
+00:45:42,449 --> 00:45:44,399
+but it will be coming to you
+
+1281
+00:45:44,770 --> 00:45:45,760
+later in the code.
+
+1282
+00:45:46,570 --> 00:45:47,199
+This way,
+
+1283
+00:45:47,290 --> 00:45:47,649
+it's,
+
+1284
+00:45:47,689 --> 00:45:51,399
+it's nicer because we have our like main code up at the top
+
+1285
+00:45:51,649 --> 00:45:55,370
+and it's not cluttered by these so-called helper functions.
+
+1286
+00:45:56,129 --> 00:45:56,610
+Um,
+
+1287
+00:45:57,469 --> 00:45:59,780
+And so this is just a bit of a cleaner way to do it.
+
+1288
+00:45:59,939 --> 00:46:01,090
+So I'm going to make Mario again.
+
+1289
+00:46:01,879 --> 00:46:02,909
+And we're gonna run
+
+1290
+00:46:04,020 --> 00:46:05,260
+So he is 5.
+
+1291
+00:46:06,310 --> 00:46:06,719
+OK,
+
+1292
+00:46:06,879 --> 00:46:09,149
+we're getting somewhere a little bit closer.
+
+1293
+00:46:09,699 --> 00:46:09,870
+Uh,
+
+1294
+00:46:10,000 --> 00:46:11,320
+still not quite right though.
+
+1295
+00:46:11,600 --> 00:46:13,639
+So I now have 5 rows,
+
+1296
+00:46:13,719 --> 00:46:14,659
+which is great
+
+1297
+00:46:15,199 --> 00:46:15,899
+because I've
+
+1298
+00:46:16,520 --> 00:46:18,840
+repeated this 5 times based on the height.
+
+1299
+00:46:20,239 --> 00:46:22,209
+And then each row I'm printing.
+
+1300
+00:46:22,939 --> 00:46:24,709
+I've passed it in with height,
+
+1301
+00:46:24,790 --> 00:46:25,840
+which is 5,
+
+1302
+00:46:26,310 --> 00:46:28,270
+number of bricks.
+
+1303
+00:46:29,459 --> 00:46:30,679
+So that's not quite right,
+
+1304
+00:46:30,750 --> 00:46:30,919
+right?
+
+1305
+00:46:31,000 --> 00:46:31,959
+We want the
+
+1306
+00:46:32,199 --> 00:46:34,189
+number of bricks printed on each time
+
+1307
+00:46:34,639 --> 00:46:36,669
+to depend on like which row we're on.
+
+1308
+00:46:36,800 --> 00:46:38,020
+So if I'm on the first row,
+
+1309
+00:46:38,399 --> 00:46:39,989
+I should print 1 brick.
+
+1310
+00:46:40,199 --> 00:46:40,919
+I'm on the second row,
+
+1311
+00:46:40,959 --> 00:46:42,100
+I should put 2 bricks,
+
+1312
+00:46:42,479 --> 00:46:43,320
+3 bricks,
+
+1313
+00:46:43,360 --> 00:46:44,469
+and so on.
+
+1314
+00:46:46,169 --> 00:46:48,280
+So instead of height here.
+
+1315
+00:46:49,030 --> 00:46:51,379
+Instead of printing out 5 in each row.
+
+1316
+00:46:52,739 --> 00:46:54,550
+This should really depend on
+
+1317
+00:46:54,860 --> 00:46:56,250
+my variable I
+
+1318
+00:46:56,500 --> 00:46:57,050
+here.
+
+1319
+00:46:57,659 --> 00:46:58,330
+So
+
+1320
+00:46:58,780 --> 00:46:59,379
+I,
+
+1321
+00:46:59,469 --> 00:47:02,590
+on the first row is gonna be 0.
+
+1322
+00:47:03,489 --> 00:47:03,899
+Then 1,
+
+1323
+00:47:03,969 --> 00:47:04,320
+then 2,
+
+1324
+00:47:04,409 --> 00:47:04,770
+then 3,
+
+1325
+00:47:04,810 --> 00:47:05,459
+then 4.
+
+1326
+00:47:06,649 --> 00:47:08,219
+So if I run it like this,
+
+1327
+00:47:08,510 --> 00:47:09,669
+let's see what happens.
+
+1328
+00:47:12,500 --> 00:47:13,270
+OK.
+
+1329
+00:47:13,629 --> 00:47:15,590
+So it's looking a little bit closer to a pyramid,
+
+1330
+00:47:15,959 --> 00:47:16,969
+but I
+
+1331
+00:47:17,159 --> 00:47:19,389
+am getting nothing on this first row.
+
+1332
+00:47:20,340 --> 00:47:21,169
+You probably
+
+1333
+00:47:21,300 --> 00:47:23,169
+maybe have noticed this when I was speaking,
+
+1334
+00:47:23,219 --> 00:47:23,590
+but
+
+1335
+00:47:23,979 --> 00:47:26,689
+we said I to be starting at 0.
+
+1336
+00:47:26,820 --> 00:47:28,399
+And so in this first row,
+
+1337
+00:47:28,699 --> 00:47:29,570
+we're printing
+
+1338
+00:47:29,939 --> 00:47:31,489
+0 blocks
+
+1339
+00:47:31,909 --> 00:47:32,620
+or bricks.
+
+1340
+00:47:33,639 --> 00:47:35,090
+So what I should do here.
+
+1341
+00:47:35,899 --> 00:47:35,909
+I
+
+1342
+00:47:36,810 --> 00:47:38,350
+somehow print one more
+
+1343
+00:47:38,649 --> 00:47:39,149
+than
+
+1344
+00:47:39,370 --> 00:47:40,629
+what I is.
+
+1345
+00:47:41,050 --> 00:47:41,959
+So I could say
+
+1346
+00:47:42,219 --> 00:47:43,020
+print out
+
+1347
+00:47:43,510 --> 00:47:45,199
+I plus one bricks.
+
+1348
+00:47:47,500 --> 00:47:48,179
+make Mario Mario.
+
+1349
+00:47:50,419 --> 00:47:51,139
+5,
+
+1350
+00:47:51,340 --> 00:47:51,659
+OK,
+
+1351
+00:47:51,780 --> 00:47:53,689
+and that is looking a lot better.
+
+1352
+00:47:54,810 --> 00:47:56,459
+Another way we could have done this,
+
+1353
+00:47:56,669 --> 00:47:57,060
+which,
+
+1354
+00:47:57,189 --> 00:47:57,510
+um,
+
+1355
+00:47:57,520 --> 00:47:59,379
+is also just as valid,
+
+1356
+00:47:59,419 --> 00:48:00,379
+is maybe
+
+1357
+00:48:00,949 --> 00:48:01,600
+instead of
+
+1358
+00:48:02,110 --> 00:48:02,949
+editing I here,
+
+1359
+00:48:02,989 --> 00:48:03,780
+I actually
+
+1360
+00:48:04,310 --> 00:48:05,709
+start the pyramid at one.
+
+1361
+00:48:06,739 --> 00:48:09,870
+And then instead of ending one before height,
+
+1362
+00:48:10,270 --> 00:48:11,820
+I could say go until
+
+1363
+00:48:12,149 --> 00:48:14,510
+I is less than or equal to height.
+
+1364
+00:48:15,340 --> 00:48:16,030
+So this way,
+
+1365
+00:48:16,070 --> 00:48:19,699
+it's still printing or repeating the same number of times,
+
+1366
+00:48:20,469 --> 00:48:24,080
+but I don't have to edit I here because I'm actually starting I
+
+1367
+00:48:24,350 --> 00:48:24,939
+at one.
+
+1368
+00:48:26,300 --> 00:48:26,810
+So
+
+1369
+00:48:27,820 --> 00:48:29,379
+We run this again,
+
+1370
+00:48:29,550 --> 00:48:30,270
+we'll see
+
+1371
+00:48:30,750 --> 00:48:31,949
+that it still works the same.
+
+1372
+00:48:32,689 --> 00:48:34,310
+And if I tried it with a different number,
+
+1373
+00:48:34,389 --> 00:48:35,080
+let's say 8.
+
+1374
+00:48:35,989 --> 00:48:36,479
+OK,
+
+1375
+00:48:36,610 --> 00:48:37,100
+awesome.
+
+1376
+00:48:37,290 --> 00:48:38,360
+Now it's like,
+
+1377
+00:48:38,889 --> 00:48:41,250
+now that's looking like what we want it to.
+
+1378
+00:48:42,260 --> 00:48:43,600
+I'm gonna try one more thing.
+
+1379
+00:48:44,580 --> 00:48:46,459
+Let's say I give it a height of
+
+1380
+00:48:46,669 --> 00:48:48,580
+like -5.
+
+1381
+00:48:49,629 --> 00:48:50,939
+It's not doing anything,
+
+1382
+00:48:51,310 --> 00:48:55,179
+which is fair because you can't really print a -5
+
+1383
+00:48:56,070 --> 00:48:57,659
+height of a pyramid,
+
+1384
+00:48:58,110 --> 00:48:59,060
+and so
+
+1385
+00:48:59,669 --> 00:49:02,830
+potentially what we want to do here is actually
+
+1386
+00:49:02,830 --> 00:49:06,090
+reprompt the user when they give you a height
+
+1387
+00:49:06,310 --> 00:49:06,760
+that
+
+1388
+00:49:07,159 --> 00:49:09,070
+can't be printed into a pyramid.
+
+1389
+00:49:10,129 --> 00:49:11,260
+So if we recall,
+
+1390
+00:49:11,739 --> 00:49:15,409
+one of the loops that we talked about was a do while loop.
+
+1391
+00:49:16,629 --> 00:49:17,909
+So
+
+1392
+00:49:18,169 --> 00:49:21,929
+this getting input from a user is a good situation
+
+1393
+00:49:22,169 --> 00:49:23,040
+to do this
+
+1394
+00:49:23,570 --> 00:49:24,199
+because
+
+1395
+00:49:24,489 --> 00:49:25,919
+we want to actually
+
+1396
+00:49:26,290 --> 00:49:29,840
+first prompt for the height so first do this step
+
+1397
+00:49:30,449 --> 00:49:34,050
+and then check if it's not a valid height.
+
+1398
+00:49:35,370 --> 00:49:35,709
+So,
+
+1399
+00:49:35,719 --> 00:49:37,370
+I'm gonna set,
+
+1400
+00:49:38,270 --> 00:49:40,280
+I'm gonna initialize height as a variable.
+
+1401
+00:49:41,820 --> 00:49:42,850
+Then we're gonna have
+
+1402
+00:49:43,139 --> 00:49:43,939
+do.
+
+1403
+00:49:45,500 --> 00:49:46,280
+Something
+
+1404
+00:49:47,659 --> 00:49:48,489
+While
+
+1405
+00:49:48,780 --> 00:49:49,889
+something else is true.
+
+1406
+00:49:51,909 --> 00:49:52,110
+OK.
+
+1407
+00:49:52,540 --> 00:49:53,060
+So,
+
+1408
+00:49:54,060 --> 00:49:55,620
+First thing I want to do is
+
+1409
+00:49:55,939 --> 00:49:58,050
+say height should be equal to
+
+1410
+00:49:58,459 --> 00:50:00,379
+what the user puts in as height.
+
+1411
+00:50:01,929 --> 00:50:03,739
+And then this block,
+
+1412
+00:50:04,629 --> 00:50:05,459
+we're saying,
+
+1413
+00:50:05,870 --> 00:50:08,020
+while some condition is true,
+
+1414
+00:50:08,389 --> 00:50:09,580
+you should go back
+
+1415
+00:50:09,750 --> 00:50:10,840
+and repeat
+
+1416
+00:50:11,189 --> 00:50:12,139
+this step again.
+
+1417
+00:50:13,189 --> 00:50:14,969
+So when do I want it to repeat that step again?
+
+1418
+00:50:15,050 --> 00:50:15,810
+Let's think.
+
+1419
+00:50:16,169 --> 00:50:17,310
+When I want,
+
+1420
+00:50:17,810 --> 00:50:18,919
+when the height is,
+
+1421
+00:50:19,080 --> 00:50:20,070
+let's say,
+
+1422
+00:50:20,370 --> 00:50:21,560
+less than 0.
+
+1423
+00:50:22,479 --> 00:50:25,520
+I should just ask the user for a new height.
+
+1424
+00:50:27,040 --> 00:50:29,600
+So I'm gonna say when the height is less than.
+
+1425
+00:50:30,560 --> 00:50:31,389
+0.
+
+1426
+00:50:31,879 --> 00:50:33,030
+I could even say
+
+1427
+00:50:33,590 --> 00:50:36,909
+less than 1 if you don't want to print out a pyramid with 0.
+
+1428
+00:50:38,379 --> 00:50:40,510
+We can say well the height is less than
+
+1429
+00:50:40,679 --> 00:50:41,149
+one.
+
+1430
+00:50:42,780 --> 00:50:43,860
+Do this
+
+1431
+00:50:44,139 --> 00:50:44,919
+over and over again,
+
+1432
+00:50:44,939 --> 00:50:46,500
+so let's test out how that works.
+
+1433
+00:50:49,419 --> 00:50:50,590
+So we do make Mario,
+
+1434
+00:50:50,709 --> 00:50:51,439
+then Mario.
+
+1435
+00:50:52,830 --> 00:50:55,780
+It it works normally if I do a normal height.
+
+1436
+00:50:56,030 --> 00:50:56,899
+If I give it
+
+1437
+00:50:58,010 --> 00:50:58,379
+-5,
+
+1438
+00:50:58,389 --> 00:50:59,110
+for example,
+
+1439
+00:50:59,229 --> 00:51:01,580
+we can see that it is prompting me again,
+
+1440
+00:51:01,629 --> 00:51:02,459
+which is great.
+
+1441
+00:51:02,790 --> 00:51:04,739
+I keep giving it negative numbers,
+
+1442
+00:51:04,830 --> 00:51:05,520
+9,
+
+1443
+00:51:05,590 --> 00:51:06,399
+-10.
+
+1444
+00:51:07,370 --> 00:51:11,530
+It's gonna keep reprompting me until I give it something valid like
+
+1445
+00:51:11,800 --> 00:51:12,270
+3,
+
+1446
+00:51:12,310 --> 00:51:14,110
+and then it'll print it out for me.
+
+1447
+00:51:15,379 --> 00:51:15,810
+OK,
+
+1448
+00:51:16,090 --> 00:51:16,560
+great.
+
+1449
+00:51:16,889 --> 00:51:17,320
+So,
+
+1450
+00:51:17,409 --> 00:51:19,669
+you're well on your way to completing
+
+1451
+00:51:19,850 --> 00:51:22,159
+this first part of Mario
+
+1452
+00:51:22,489 --> 00:51:23,860
+and the first part of the problem set.
+
+1453
+00:51:24,899 --> 00:51:25,649
+And
+
+1454
+00:51:25,939 --> 00:51:29,729
+let's just talk a little bit more broadly about what we just did here.
+
+1455
+00:51:31,879 --> 00:51:35,429
+Specifically with this print row function.
+
+1456
+00:51:37,699 --> 00:51:38,409
+So,
+
+1457
+00:51:38,419 --> 00:51:40,370
+if you think back to our
+
+1458
+00:51:40,620 --> 00:51:43,770
+description of functions as like a black box,
+
+1459
+00:51:44,260 --> 00:51:44,820
+um,
+
+1460
+00:51:46,929 --> 00:51:50,199
+We have this box here that we've titled print row.
+
+1461
+00:51:51,290 --> 00:51:52,360
+And this box,
+
+1462
+00:51:52,469 --> 00:51:53,469
+which is our function,
+
+1463
+00:51:53,760 --> 00:51:55,270
+is taking in an input
+
+1464
+00:51:55,760 --> 00:51:57,989
+of the number of bricks we want to print.
+
+1465
+00:51:58,729 --> 00:52:00,010
+And outputting
+
+1466
+00:52:00,419 --> 00:52:02,820
+that printed row of bricks.
+
+1467
+00:52:04,979 --> 00:52:05,250
+So,
+
+1468
+00:52:05,260 --> 00:52:05,649
+for example,
+
+1469
+00:52:05,739 --> 00:52:08,169
+if I gave it 3 as the input,
+
+1470
+00:52:08,659 --> 00:52:09,649
+then it printed out
+
+1471
+00:52:09,899 --> 00:52:10,820
+3 blocks.
+
+1472
+00:52:11,709 --> 00:52:13,149
+And so that's really great.
+
+1473
+00:52:14,229 --> 00:52:15,820
+That's really great to have
+
+1474
+00:52:16,189 --> 00:52:18,219
+um in your program
+
+1475
+00:52:18,469 --> 00:52:23,889
+as a way to again abstract a certain part of that code away
+
+1476
+00:52:24,229 --> 00:52:27,379
+you could do this exactly the same if I
+
+1477
+00:52:27,669 --> 00:52:30,889
+say moved this into my main function
+
+1478
+00:52:31,310 --> 00:52:36,379
+and printed each row within this main function like that also works really well.
+
+1479
+00:52:37,179 --> 00:52:42,199
+But abstracting away this functionality into a separate function
+
+1480
+00:52:42,679 --> 00:52:43,189
+is
+
+1481
+00:52:43,550 --> 00:52:45,959
+one way of making your code potentially more clean,
+
+1482
+00:52:46,080 --> 00:52:46,949
+more readable,
+
+1483
+00:52:47,399 --> 00:52:47,830
+um,
+
+1484
+00:52:47,840 --> 00:52:49,800
+and easier to,
+
+1485
+00:52:49,959 --> 00:52:51,830
+to see where things are going,
+
+1486
+00:52:51,959 --> 00:52:52,870
+what's going on
+
+1487
+00:52:53,120 --> 00:52:54,989
+without making the code super long.
+
+1488
+00:52:55,659 --> 00:52:58,709
+So this is a technique that you're going to continue to use throughout
+
+1489
+00:52:58,949 --> 00:52:59,360
+this
+
+1490
+00:52:59,709 --> 00:53:00,379
+course
+
+1491
+00:53:00,629 --> 00:53:03,709
+and hopefully that gives you some more intuition on
+
+1492
+00:53:03,709 --> 00:53:06,300
+when it might be helpful to create a function.
+
+1493
+00:53:09,129 --> 00:53:09,600
+All right,
+
+1494
+00:53:09,770 --> 00:53:10,209
+so
+
+1495
+00:53:10,530 --> 00:53:14,600
+that was CS 50 week one section one on C.
+
+1496
+00:53:15,050 --> 00:53:16,320
+If you have any questions,
+
+1497
+00:53:16,449 --> 00:53:17,649
+feel free to
+
+1498
+00:53:18,169 --> 00:53:19,669
+use our resources,
+
+1499
+00:53:19,989 --> 00:53:20,560
+um,
+
+1500
+00:53:20,570 --> 00:53:22,290
+email me if you need to,
+
+1501
+00:53:22,649 --> 00:53:24,290
+and I hope you have a great day.
