@@ -969,3 +969,4 @@ would be a lot more straightforward.
 
 206
 00:09:21,100 --> 00:09:22,688
+
